@@ -183,6 +183,112 @@
             
 
   
+    <article id="post-hexoToGitHub" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/idt.github.io/hexoToGitHub/" target="_blank">hexoToGitHub</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/idt.github.io/hexoToGitHub/" class="archive-article-date">
+        <time datetime="2022-01-24T01:47:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><a target="_blank" rel="noopener" href="https://github.com/">Github</a>提供了免费的托管服务，并且也免费提供了.io的域名。个人博客创作者如果对于博客网站访问量没有特别高的要求，仅作为个人或小规模团队使用，可以借助github来搭建博客静态博客系统。</p>
+<p>搭建博客系统使用github的好处：<br>1、github提供了免费的托管服务。<br>2、github提供了免费的.io域名,不需要开发者额外购买域名。</p>
+<p>搭建博客系统使用hexo的好处:<br>1、<a target="_blank" rel="noopener" href="https://hexo.io/themes/">hexo官方网站</a>提供了大量开源的博客主题模板，开发者如果不想自己设计博客主题，则可以直接在官方网站上寻找并使用自己喜欢的主题。<br>2、方便维护，使用<a target="_blank" rel="noopener" href="https://markdown.com.cn/">markdown</a>语法，开发者可以将更多的精力放在博客内容的搭建上。</p>
+<h3 id="一、环境搭建"><a href="#一、环境搭建" class="headerlink" title="一、环境搭建"></a>一、环境搭建</h3><p>参考<a href="https://alexjwell.github.io/idt.github.io/HelloHexo/">hexo环境搭建</a></p>
+<h3 id="二、在github创建项目"><a href="#二、在github创建项目" class="headerlink" title="二、在github创建项目"></a>二、在github创建项目</h3><h4 id="1、在github上创建并设置远程库"><a href="#1、在github上创建并设置远程库" class="headerlink" title="1、在github上创建并设置远程库"></a>1、在github上创建并设置远程库</h4><p>登录后点击”+”号，选择New respository，下一步<br>在respository name下面填写要创建的域名，以github.io结尾，例如abc.github.io<br>按照提示一步步完成创建。<br>在setting设置远程库：<br>找到GitHub Pages点击Automatic page generator<br>等待github pages创建完成，然后访问测试地址测试是否创建成功。</p>
+<h4 id="2、配置git"><a href="#2、配置git" class="headerlink" title="2、配置git"></a>2、配置git</h4><p>在hexo工程里找到根目录下的_config.yml文件，配置远程仓库地址</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https:<span class="comment">//github.com/abc/abc.github.io.git</span></span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<h4 id="3、安装部署工具并初始化git"><a href="#3、安装部署工具并初始化git" class="headerlink" title="3、安装部署工具并初始化git"></a>3、安装部署工具并初始化git</h4><p>在hexo工程里执行命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git -save</span><br></pre></td></tr></table></figure>
+<p>初始化本地仓库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init </span><br></pre></td></tr></table></figure>
+<p>连接远程仓库<br>如果出现提示要输入用户名和密码,则按照提示输入即可。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/abc/abc.github.io.git</span><br></pre></td></tr></table></figure>
+<h4 id="4、发布hexo版本"><a href="#4、发布hexo版本" class="headerlink" title="4、发布hexo版本"></a>4、发布hexo版本</h4><p>在hexo工程中执行以下命令即可将hexo发布到github上</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+<p>添加文件命令为</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add</span><br></pre></td></tr></table></figure>
+<p>提交声明命令为</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &#x27;声明内容&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">hexoToGitHub</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/idt.github.io/hexoToGitHub/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hello-vuepress" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -212,14 +318,14 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h3 id="官方介绍"><a href="#官方介绍" class="headerlink" title="官方介绍"></a>官方介绍</h3><p><a target="_blank" rel="noopener" href="https://vuepress.vuejs.org/">VuePress</a> 网站是一个由 [Vue] (<a target="_blank" rel="noopener" href="https://vuejs.org/)%E3%80%81[Vue-Router]">https://vuejs.org/)、[Vue-Router]</a> (<a target="_blank" rel="noopener" href="https://github.com/vuejs/vue-router)%E5%92%8C">https://github.com/vuejs/vue-router)和</a> [webpack] (<a target="_blank" rel="noopener" href="https://webpack.js.org/)%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%8D%95%E9%A1%B5%E5%BA%94%E7%94%A8%E3%80%82%E5%AF%B9%E4%BA%8E%E4%BD%BF%E7%94%A8%E8%BF%87vue%E7%9A%84%E4%BA%BA%E6%9D%A5%E8%AF%B4%E6%9C%89%E8%BE%83%E5%A5%BD%E7%9A%84%E5%BC%80%E5%8F%91%E4%BD%93%E9%AA%8C%E3%80%82">https://webpack.js.org/)驱动的单页应用。对于使用过vue的人来说有较好的开发体验。</a></p>
+    <h3 id="官方介绍"><a href="#官方介绍" class="headerlink" title="官方介绍"></a>官方介绍</h3><p><a target="_blank" rel="noopener" href="https://vuepress.vuejs.org/">VuePress</a> 网站是一个由 <a target="_blank" rel="noopener" href="https://vuejs.org/">Vue</a>、<a target="_blank" rel="noopener" href="https://github.com/vuejs/vue-router">Vue-Router</a>和 <a target="_blank" rel="noopener" href="https://webpack.js.org/">webpack</a>驱动的单页应用。对于使用过vue的人来说有较好的开发体验。</p>
 <p>VuePress 由两部分组成：第一部分是一个极简静态网站生成器，它包含由 Vue 驱动的主题系统和插件 API，另一个部分是为书写技术文档而优化的默认主题，它的诞生初衷是为了支持 Vue 及其子项目的文档需求。</p>
 <p>每一个由 VuePress 生成的页面都带有预渲染好的 HTML，也因此具有非常好的加载性能和搜索引擎优化（SEO）。同时，一旦页面被加载，Vue 将接管这些静态内容，并将其转换成一个完整的单页应用（SPA），其他的页面则会只在用户浏览到的时候才按需加载。</p>
-<h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><h4 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h4><pre><code>需要[Node.js] (https://nodejs.org/zh-cn/)版本&gt;= 8.6</code></pre>
-<h4 id="1、创建工作目录"><a href="#1、创建工作目录" class="headerlink" title="1、创建工作目录"></a>1、创建工作目录</h4><pre><code>找一个工作目录创建项目文件夹</code></pre>
+<h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><h4 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h4><p>  需要<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/">Node.js</a>版本&gt;= 8.6</p>
+<h4 id="1、创建工作目录"><a href="#1、创建工作目录" class="headerlink" title="1、创建工作目录"></a>1、创建工作目录</h4><p>  找一个工作目录创建项目文件夹</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir vuepressblog &amp;&amp; cd vuepressblog</span><br></pre></td></tr></table></figure>
 <h4 id="2、使用包管理器初始化"><a href="#2、使用包管理器初始化" class="headerlink" title="2、使用包管理器初始化"></a>2、使用包管理器初始化</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn init # npm init</span><br></pre></td></tr></table></figure>
-<h4 id="3、将VuePress安装为本地依赖"><a href="#3、将VuePress安装为本地依赖" class="headerlink" title="3、将VuePress安装为本地依赖"></a>3、将VuePress安装为本地依赖</h4><p>注意:<br>a、官方文档中不推荐全局安装VuePress<br>b、如果现有项目依赖webpack 3.x，推荐使用yarn而不是npm来安装VuePress。因为这种情况下npm可能会生成错误的依赖树。</p>
+<h4 id="3、将VuePress安装为本地依赖"><a href="#3、将VuePress安装为本地依赖" class="headerlink" title="3、将VuePress安装为本地依赖"></a>3、将VuePress安装为本地依赖</h4><p>注意:<br>a、官方文档中不推荐全局安装VuePress<br>b、如果现有项目依赖webpack 3.x，推荐使用yarn而不是npm来安装VuePress。因为这种情况下npm可能会生成错误的依赖树。  </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add -D vuepress # npm install -D vuepress</span><br></pre></td></tr></table></figure>
 <h4 id="4、创建第一篇文档"><a href="#4、创建第一篇文档" class="headerlink" title="4、创建第一篇文档"></a>4、创建第一篇文档</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir docs &amp;&amp; echo &#x27;# Hello VuePress&#x27; &gt; docs/README.md</span><br></pre></td></tr></table></figure>
 <h4 id="5、添加scripts"><a href="#5、添加scripts" class="headerlink" title="5、添加scripts"></a>5、添加scripts</h4><p>此步骤为可选操作，建议执行<br>在package.json中添加scripts</p>
@@ -313,7 +419,7 @@
     
     <p><a target="_blank" rel="noopener" href="http://www.quartz-scheduler.org/">Quartz</a>是OpenSymphony开源组织在Job scheduling领域又一个开源项目。完全由 Java 编写的开源作业调度框架，为在 Java 应用程序中进行作业调度提供了简单却强大的机制。</p>
 <h3 id="下载版本包"><a href="#下载版本包" class="headerlink" title="下载版本包"></a>下载版本包</h3><p>在其<a target="_blank" rel="noopener" href="http://www.quartz-scheduler.org/downloads/">官方</a>发布的版本包中找到最新的stable版本<a target="_blank" rel="noopener" href="http://www.quartz-scheduler.org/downloads/files/quartz-2.3.0-distribution.tar.gz">quartz-2.3.0-distribution.tar.gz</a>下载并解压,可以发现官方将使用示例(examples)、文档说明(javadoc)、依赖包(lib)、授权许可说明(licenses)、以及源码(src)等都放进了版本包中。</p>
-<h3 id="授权许可"><a href="#授权许可" class="headerlink" title="授权许可"></a>授权许可</h3><p>其中引用的第三方jar包授权许可如下<br>· apache-log4j为Apache License 2.0 Embedded License(s)<br>· c3p0为GNU Lesser General Public License v2.1<br>· gf.javax.transaction.jar为GlassFish - Common Development and Distribution License<br>· slf4j-log4j12为MIT License (also X11)<br>· slf4j为MIT License (also X11)</p>
+<h3 id="授权许可"><a href="#授权许可" class="headerlink" title="授权许可"></a>授权许可</h3><p>其中引用的第三方jar包授权许可如下<br>· apache-log4j为Apache License 2.0 Embedded License(s)<br>· c3p0为GNU Lesser General Public License v2.1<br>· gf.javax.transaction.jar为GlassFish - Common Development and Distribution License<br>· slf4j-log4j12为MIT License (also X11)<br>· slf4j为MIT License (also X11)  </p>
 <p>Quartz自己的授权许可为Apache License 2.0</p>
 <h3 id="组件示例"><a href="#组件示例" class="headerlink" title="组件示例"></a>组件示例</h3><p>官方共列举了15个示例，分别为<br>· example1 -  Your first Quartz Program<br>· example2 -  Simple Triggers<br>· example3 -  Cron Triggers<br>· example4 -  Job State and Job Parameters<br>· example5 -  Job Misfires<br>· example6 -  Handling Job Exceptions<br>· example7 -  Interrupting Jobs<br>· example8 -  How to use Quartz Calendars<br>· example9 -  Using Job Listeners<br>· example10 - Using Quartz Plug-Ins<br>· example11 - Loading Up Quartz with Many Jobs<br>· example12 - Remoting with Quartz using RMI<br>· example13 - Clustering Quartz and JDBC Job Stores<br>· example14 - Quartz Trigger Priorities<br>· example15 - Clustering Quartz and Terracotta Job Store<br>这些示例介绍了quartz的基本用途和相关方法</p>
 
@@ -405,11 +511,14 @@
 <h3 id="必备环境"><a href="#必备环境" class="headerlink" title="必备环境"></a>必备环境</h3><p>· Node.js (Node.js 版本需不低于 10.13，建议使用 Node.js 12.0 及以上版本)<br>· Git</p>
 <h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><p>必备环境准备好之后，开始安装hexo<br>· 执行以下命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>其中-g表示将当前程序包上下文（即当前工作目录）安装为全局程序包。</p>
+<p>其中-g表示将当前程序包上下文（即当前工作目录）安装为全局程序包。  </p>
 <p>· 或者执行以下命令，仅局部安装hexo包</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo</span><br></pre></td></tr></table></figure>
 <h3 id="执行hexo"><a href="#执行hexo" class="headerlink" title="执行hexo"></a>执行hexo</h3><p>执行以下命令即可执行hexo相关功能</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx hexo &lt;<span class="built_in">command</span>&gt;</span><br></pre></td></tr></table></figure>
+
+
+
     
 
     
@@ -685,6 +794,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hello World</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">hexoToGitHub</a>
               </li>
              
               <li class="article-tag-list-item">
