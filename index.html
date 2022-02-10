@@ -183,6 +183,255 @@
             
 
   
+    <article id="post-helloMongoDB" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/idt.github.io/helloMongoDB/" target="_blank">helloMongoDB</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/idt.github.io/helloMongoDB/" class="archive-article-date">
+        <time datetime="2022-01-25T06:51:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-25</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="一、创建源文件"><a href="#一、创建源文件" class="headerlink" title="一、创建源文件"></a>一、创建源文件</h1><p>在<code>/etc/yum.repos.d/</code> 目录下新建源文件<code>mongodb-org-4.2.repo</code>,并启动MongoDB源。<br>源文件配置如下:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[mongodb-org-4.2]</span><br><span class="line">name=MongoDB Repository</span><br><span class="line">baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc</span><br></pre></td></tr></table></figure>
+<p>如果想安装其他版本的MongoDB,则需要修改配置文件中的4.2版本号。</p>
+<h1 id="二、安装MongoDB-org软件包"><a href="#二、安装MongoDB-org软件包" class="headerlink" title="二、安装MongoDB-org软件包"></a>二、安装MongoDB-org软件包</h1><p>执行命令:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf install mongodb-org</span><br><span class="line"><span class="meta">#</span><span class="bash">sudo yum install mongodb-org</span></span><br></pre></td></tr></table></figure>
+<p>如果需要指定安装版本，则可执行如下命令:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y mongodb-org-4.2.6 mongodb-org-server-4.2.6 mongodb-org-shell-4.2.6 mongodb-org-mongos-4.2.6 mongodb-org-tools-4.2.6</span><br></pre></td></tr></table></figure>
+<h1 id="三、运行MongoDB"><a href="#三、运行MongoDB" class="headerlink" title="三、运行MongoDB"></a>三、运行MongoDB</h1><h2 id="1、资源限制"><a href="#1、资源限制" class="headerlink" title="1、资源限制"></a>1、资源限制</h2><p>大多数类Unix操作系统都限制了会话可能使用的系统资源。这些限制可能会对MongoDB的运行产生负面影响。详见<a target="_blank" rel="noopener" href="https://mongodb.net.cn/manual/reference/ulimit/">官方说明</a>。</p>
+<h2 id="2、数据路径设置"><a href="#2、数据路径设置" class="headerlink" title="2、数据路径设置"></a>2、数据路径设置</h2><p>默认情况下MongoDB使用mongod用户运行，并使用以下默认目录：<br>· /var/lib/mongo (数据目录)<br>· /var/log/mongodb (日志目录)</p>
+<h3 id="1）-使用默认目录的情况"><a href="#1）-使用默认目录的情况" class="headerlink" title="1） 使用默认目录的情况"></a>1） 使用默认目录的情况</h3><p>如果通过程序包管理器安装，将创建默认目录，并将这些目录的所有者和组设置为mongod。   </p>
+<p>如果通过下载压缩包进行安装，未创建默认的MongoDB目录。要创建MongoDB数据和日志目录：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /var/lib/mongo</span><br><span class="line">sudo mkdir -p /var/log/mongodb</span><br></pre></td></tr></table></figure>
+<p>然后将这些目录的所有者和组设置为mongod：  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R mongod:mongod &lt;directory&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2）-使用非默认目录的情况"><a href="#2）-使用非默认目录的情况" class="headerlink" title="2） 使用非默认目录的情况"></a>2） 使用非默认目录的情况</h3><p>要使用默认目录以外的数据目录和/或日志目录：   </p>
+<p>1、创建一个或多个新目录。   </p>
+<p>2、编辑配置文件，/etc/mongod.conf 并相应修改以下字段：<br>· storage.dbPath 指定新的数据目录路径（例如/some/data/directory）<br>· systemLog.path 指定新的日志文件路径（例如/some/log/directory/mongod.log）   </p>
+<p>3、确保运行MongoDB的用户有权访问一个或多个目录：   </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R mongod:mongod &lt;directory&gt;</span><br></pre></td></tr></table></figure>
+<p>如果更改运行MongoDB进程的用户，则必须授予新用户访问这些目录的权限。</p>
+<p>4、如果强制配置SELinux。可参考<a target="_blank" rel="noopener" href="https://mongodb.net.cn/manual/tutorial/install-mongodb-on-red-hat/#install-rhel-configure-selinux">链接</a></p>
+<h2 id="3、启动程序"><a href="#3、启动程序" class="headerlink" title="3、启动程序"></a>3、启动程序</h2><p>以下步骤均在默认设置的基础上执行。</p>
+<h3 id="1）初始化系统"><a href="#1）初始化系统" class="headerlink" title="1）初始化系统"></a>1）初始化系统</h3><p>需要根据不同的linux版本进行初始化。<br>先确定平台使用哪个初始化系统，执行以下命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps --no-headers -o comm 1</span><br></pre></td></tr></table></figure>
+<p>根据结果在下面选择适当的选项卡：<br>· systemd -选择下面的systemd (systemctl)标签。<br>· init -选择下面的system V init (服务)标签。<br>· systemd （systemctl）<br>· 系统V初始化 （服务）</p>
+<h4 id="a、启动MongoDB"><a href="#a、启动MongoDB" class="headerlink" title="a、启动MongoDB"></a>a、启动MongoDB</h4><p>可以mongod通过执行以下命令来启动该过程：   </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start mongod</span><br></pre></td></tr></table></figure>
+<p>如果出现以下类似错误：<br><code>Failed to start mongod.service: Unit mongod.service not found.</code></p>
+<p>执行命令：   </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+<p>然后执行上面的启动命令。</p>
+<h4 id="b、验证MongoDB已经启动成功"><a href="#b、验证MongoDB已经启动成功" class="headerlink" title="b、验证MongoDB已经启动成功"></a>b、验证MongoDB已经启动成功</h4><p>通过以下命令验证服务启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status mongod</span><br></pre></td></tr></table></figure>
+<p>通过以下命令确保系统重启之后启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable mongod</span><br></pre></td></tr></table></figure>
+<h4 id="c、停止MongoDB"><a href="#c、停止MongoDB" class="headerlink" title="c、停止MongoDB"></a>c、停止MongoDB</h4><p>执行以下命令重启MongoDB</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart mongod</span><br></pre></td></tr></table></figure>
+<p>可以通过查看<code>/var/log/mongodb/mongod.log</code>文件中的输出来跟踪错误或重要消息的处理状态。</p>
+<h4 id="d、开始使用MongoDB"><a href="#d、开始使用MongoDB" class="headerlink" title="d、开始使用MongoDB"></a>d、开始使用MongoDB</h4><p>执行以下命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongod start </span><br></pre></td></tr></table></figure>
+<h4 id="e、验证MongoDB已成功启动"><a href="#e、验证MongoDB已成功启动" class="headerlink" title="e、验证MongoDB已成功启动"></a>e、验证MongoDB已成功启动</h4><p>可以通过查看日志文件<code>/var/log/mongodb/mongod.log</code>验证是否成功启动。<br>默认情况下，端口在<code>/etc/mongod.conf</code>中进行了配置。<br>并且可以通过以下命令确保MongoDB将系统重启后启动：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chkconfig mongod on</span><br></pre></td></tr></table></figure>
+<h4 id="f、停止MongoDB"><a href="#f、停止MongoDB" class="headerlink" title="f、停止MongoDB"></a>f、停止MongoDB</h4><p>执行命令终止服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongod stop</span><br></pre></td></tr></table></figure>
+<h4 id="g、重启MongoDB"><a href="#g、重启MongoDB" class="headerlink" title="g、重启MongoDB"></a>g、重启MongoDB</h4><p>执行命令重启命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongod restart</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、卸载MongoDB"><a href="#4、卸载MongoDB" class="headerlink" title="4、卸载MongoDB"></a>4、卸载MongoDB</h2><h3 id="1）停止MongoDB"><a href="#1）停止MongoDB" class="headerlink" title="1）停止MongoDB"></a>1）停止MongoDB</h3><p>执行命令以停止服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongod stop</span><br></pre></td></tr></table></figure>
+<h3 id="2）删除软件包"><a href="#2）删除软件包" class="headerlink" title="2）删除软件包"></a>2）删除软件包</h3><p>删除以前安装的所有MongoDB软件包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum erase $(rpm -qa | grep mongodb-org)</span><br></pre></td></tr></table></figure>
+<h3 id="3）删除数据目录"><a href="#3）删除数据目录" class="headerlink" title="3）删除数据目录"></a>3）删除数据目录</h3><p>删除MongoDB数据库和日志文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -r /var/log/mongodb</span><br><span class="line">sudo rm -r /var/lib/mongo</span><br></pre></td></tr></table></figure>
+
+<h2 id="5、注意事项"><a href="#5、注意事项" class="headerlink" title="5、注意事项"></a>5、注意事项</h2><p>默认情况下，MongoDB启动时将其bindIp设置为 127.0.0.1，绑定到localhost网络接口。这意味着mongod只能接受来自同一计算机上运行的客户端的连接。除非将此值设置为有效的网络接口，否则远程客户端将无法连接到mongod，并且mongod不能初始化副本集。</p>
+<p>此参数可配置：<br>在MongoDB配置文件中，带有bindIp或通过命令行参数 –bind_ip</p>
+<p>但是，一旦将服务ip绑定为可公共访问的ip之前，则需要进行安全策略考虑,阅读完整的<a target="_blank" rel="noopener" href="https://mongodb.net.cn/manual/administration/security-checklist/">安全清单</a>，包括且不限于<a target="_blank" rel="noopener" href="https://mongodb.net.cn/manual/administration/security-checklist/#checklist-auth">启用身份验证</a>和<a target="_blank" rel="noopener" href="https://mongodb.net.cn/manual/core/security-hardening/">强化网络基础架构</a>等。</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/idt.github.io/helloMongoDB/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-vuepressTools" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/idt.github.io/vuepressTools/" target="_blank">vuepressTools</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/idt.github.io/vuepressTools/" class="archive-article-date">
+        <time datetime="2022-01-24T03:32:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><a target="_blank" rel="noopener" href="https://vuepress-theme-reco.recoluan.com/views/plugins/">官方</a>提供了一些实用插件,并且也收录了一些<a target="_blank" rel="noopener" href="https://vuepress-theme-reco.recoluan.com/views/other/recommend.html">其他插件</a>。</p>
+<h1 id="一、官方主题vuepress-theme-reco"><a href="#一、官方主题vuepress-theme-reco" class="headerlink" title="一、官方主题vuepress-theme-reco"></a>一、官方主题vuepress-theme-reco</h1><p>说明地址<a target="_blank" rel="noopener" href="https://vuepress-theme-reco.recoluan.com/views/1.x/">https://vuepress-theme-reco.recoluan.com/views/1.x/</a><br>安装命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install vuepress-theme-reco --save-dev</span><br><span class="line"><span class="meta">#</span><span class="bash"> or</span></span><br><span class="line">yarn add vuepress-theme-reco</span><br></pre></td></tr></table></figure>
+<p>引用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// .vuepress/config.js</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  theme: &#x27;reco&#x27;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+
+<h1 id="二、回到顶部插件vuepress-plugin-go-top"><a href="#二、回到顶部插件vuepress-plugin-go-top" class="headerlink" title="二、回到顶部插件vuepress-plugin-go-top"></a>二、回到顶部插件vuepress-plugin-go-top</h1><p>git地址<a target="_blank" rel="noopener" href="https://github.com/moefyit/vuepress-plugin-go-top">https://github.com/moefyit/vuepress-plugin-go-top</a><br>安装命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yarn add vuepress-plugin-go-top -D</span><br><span class="line"><span class="meta">#</span><span class="bash"> or use npm</span></span><br><span class="line">npm i vuepress-plugin-go-top -D</span><br></pre></td></tr></table></figure>
+<p>引用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// .vuepress/config.js</span><br><span class="line">module.exports = &#123;</span><br><span class="line">   plugins: [&#x27;go-top&#x27;],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// .vuepress/styles/palette.styl</span><br><span class="line"><span class="meta">$</span><span class="bash">MQWide ?= 1440px</span></span><br><span class="line"><span class="meta">$</span><span class="bash">MQMobile ?= 768px</span></span><br></pre></td></tr></table></figure>
+<h1 id="三、添加动态标题插件vuepress-plugin-dynamic-title"><a href="#三、添加动态标题插件vuepress-plugin-dynamic-title" class="headerlink" title="三、添加动态标题插件vuepress-plugin-dynamic-title"></a>三、添加动态标题插件vuepress-plugin-dynamic-title</h1><p>git地址<a target="_blank" rel="noopener" href="https://github.com/moefyit/vuepress-plugin-dynamic-title">https://github.com/moefyit/vuepress-plugin-dynamic-title</a><br>安装命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yarn add vuepress-plugin-dynamic-title -D</span><br><span class="line"><span class="meta">#</span><span class="bash"> or use npm</span></span><br><span class="line">npm i vuepress-plugin-dynamic-title -D</span><br></pre></td></tr></table></figure>
+<p>引用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">   plugins: [&#x27;dynamic-title&#x27;],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">   plugins: [</span><br><span class="line">      [</span><br><span class="line">         &#x27;dynamic-title&#x27;,</span><br><span class="line">         &#123;</span><br><span class="line">            showIcon: &#x27;/favicon.ico&#x27;,</span><br><span class="line">            showText: &#x27;(/≧▽≦/)咦！又好了！&#x27;,</span><br><span class="line">            hideIcon: &#x27;/failure.ico&#x27;,</span><br><span class="line">            hideText: &#x27;(●—●)喔哟，崩溃啦！&#x27;,</span><br><span class="line">            recoverTime: 2000,</span><br><span class="line">         &#125;,</span><br><span class="line">      ],</span><br><span class="line">   ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="四、丝带插件vuepress-plugin-ribbon"><a href="#四、丝带插件vuepress-plugin-ribbon" class="headerlink" title="四、丝带插件vuepress-plugin-ribbon"></a>四、丝带插件vuepress-plugin-ribbon</h1><p>安装命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yarn add vuepress-plugin-ribbon -D</span><br><span class="line"><span class="meta">#</span><span class="bash"> or use npm</span></span><br><span class="line">npm i vuepress-plugin-ribbon -D</span><br></pre></td></tr></table></figure>
+<p>引用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">   plugins: [&#x27;ribbon&#x27;],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">   plugins: [</span><br><span class="line">      [</span><br><span class="line">         &#x27;ribbon&#x27;,</span><br><span class="line">         &#123;</span><br><span class="line">            size: 90, // width of the ribbon, default: 90</span><br><span class="line">            opacity: 0.8, // opacity of the ribbon, default: 0.3</span><br><span class="line">            zIndex: -1, // z-index property of the background, default: -1</span><br><span class="line">         &#125;,</span><br><span class="line">      ],</span><br><span class="line">   ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="五、图片放大插件vuepress-plugin-medium-zoom"><a href="#五、图片放大插件vuepress-plugin-medium-zoom" class="headerlink" title="五、图片放大插件vuepress/plugin-medium-zoom"></a>五、图片放大插件vuepress/plugin-medium-zoom</h1><h1 id="六、看板娘live2d动画插件vuepress-reco-vuepress-plugin-kan-ban-niang"><a href="#六、看板娘live2d动画插件vuepress-reco-vuepress-plugin-kan-ban-niang" class="headerlink" title="六、看板娘live2d动画插件vuepress-reco/vuepress-plugin-kan-ban-niang"></a>六、看板娘live2d动画插件vuepress-reco/vuepress-plugin-kan-ban-niang</h1>
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">常用vuepress工具集说明</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/idt.github.io/vuepressTools/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hexoToGitHub" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -215,17 +464,17 @@
     <p><a target="_blank" rel="noopener" href="https://github.com/">Github</a>提供了免费的托管服务，并且也免费提供了.io的域名。个人博客创作者如果对于博客网站访问量没有特别高的要求，仅作为个人或小规模团队使用，可以借助github来搭建博客静态博客系统。</p>
 <p>搭建博客系统使用github的好处：<br>1、github提供了免费的托管服务。<br>2、github提供了免费的.io域名,不需要开发者额外购买域名。</p>
 <p>搭建博客系统使用hexo的好处:<br>1、<a target="_blank" rel="noopener" href="https://hexo.io/themes/">hexo官方网站</a>提供了大量开源的博客主题模板，开发者如果不想自己设计博客主题，则可以直接在官方网站上寻找并使用自己喜欢的主题。<br>2、方便维护，使用<a target="_blank" rel="noopener" href="https://markdown.com.cn/">markdown</a>语法，开发者可以将更多的精力放在博客内容的搭建上。</p>
-<h3 id="一、环境搭建"><a href="#一、环境搭建" class="headerlink" title="一、环境搭建"></a>一、环境搭建</h3><p>参考<a href="https://alexjwell.github.io/idt.github.io/HelloHexo/">hexo环境搭建</a></p>
-<h3 id="二、在github创建项目"><a href="#二、在github创建项目" class="headerlink" title="二、在github创建项目"></a>二、在github创建项目</h3><h4 id="1、在github上创建并设置远程库"><a href="#1、在github上创建并设置远程库" class="headerlink" title="1、在github上创建并设置远程库"></a>1、在github上创建并设置远程库</h4><p>登录后点击”+”号，选择New respository，下一步<br>在respository name下面填写要创建的域名，以github.io结尾，例如abc.github.io<br>按照提示一步步完成创建。<br>在setting设置远程库：<br>找到GitHub Pages点击Automatic page generator<br>等待github pages创建完成，然后访问测试地址测试是否创建成功。</p>
-<h4 id="2、配置git"><a href="#2、配置git" class="headerlink" title="2、配置git"></a>2、配置git</h4><p>在hexo工程里找到根目录下的_config.yml文件，配置远程仓库地址</p>
+<h1 id="一、环境搭建"><a href="#一、环境搭建" class="headerlink" title="一、环境搭建"></a>一、环境搭建</h1><p>参考<a href="https://alexjwell.github.io/idt.github.io/HelloHexo/">hexo环境搭建</a></p>
+<h1 id="二、在github创建项目"><a href="#二、在github创建项目" class="headerlink" title="二、在github创建项目"></a>二、在github创建项目</h1><h2 id="1、在github上创建并设置远程库"><a href="#1、在github上创建并设置远程库" class="headerlink" title="1、在github上创建并设置远程库"></a>1、在github上创建并设置远程库</h2><p>登录后点击”+”号，选择New respository，下一步<br>在respository name下面填写要创建的域名，以github.io结尾，例如abc.github.io<br>按照提示一步步完成创建。<br>在setting设置远程库：<br>找到GitHub Pages点击Automatic page generator<br>等待github pages创建完成，然后访问测试地址测试是否创建成功。</p>
+<h2 id="2、配置git"><a href="#2、配置git" class="headerlink" title="2、配置git"></a>2、配置git</h2><p>在hexo工程里找到根目录下的_config.yml文件，配置远程仓库地址</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https:<span class="comment">//github.com/abc/abc.github.io.git</span></span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<h4 id="3、安装部署工具并初始化git"><a href="#3、安装部署工具并初始化git" class="headerlink" title="3、安装部署工具并初始化git"></a>3、安装部署工具并初始化git</h4><p>在hexo工程里执行命令</p>
+<h2 id="3、安装部署工具并初始化git"><a href="#3、安装部署工具并初始化git" class="headerlink" title="3、安装部署工具并初始化git"></a>3、安装部署工具并初始化git</h2><p>在hexo工程里执行命令</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git -save</span><br></pre></td></tr></table></figure>
 <p>初始化本地仓库</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init </span><br></pre></td></tr></table></figure>
 <p>连接远程仓库<br>如果出现提示要输入用户名和密码,则按照提示输入即可。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/abc/abc.github.io.git</span><br></pre></td></tr></table></figure>
-<h4 id="4、发布hexo版本"><a href="#4、发布hexo版本" class="headerlink" title="4、发布hexo版本"></a>4、发布hexo版本</h4><p>在hexo工程中执行以下命令即可将hexo发布到github上</p>
+<h2 id="4、发布hexo版本"><a href="#4、发布hexo版本" class="headerlink" title="4、发布hexo版本"></a>4、发布hexo版本</h2><p>在hexo工程中执行以下命令即可将hexo发布到github上</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
 <p>添加文件命令为</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add</span><br></pre></td></tr></table></figure>
@@ -318,19 +567,19 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h3 id="官方介绍"><a href="#官方介绍" class="headerlink" title="官方介绍"></a>官方介绍</h3><p><a target="_blank" rel="noopener" href="https://vuepress.vuejs.org/">VuePress</a> 网站是一个由 <a target="_blank" rel="noopener" href="https://vuejs.org/">Vue</a>、<a target="_blank" rel="noopener" href="https://github.com/vuejs/vue-router">Vue-Router</a>和 <a target="_blank" rel="noopener" href="https://webpack.js.org/">webpack</a>驱动的单页应用。对于使用过vue的人来说有较好的开发体验。</p>
+    <h1 id="官方介绍"><a href="#官方介绍" class="headerlink" title="官方介绍"></a>官方介绍</h1><p><a target="_blank" rel="noopener" href="https://vuepress.vuejs.org/">VuePress</a> 网站是一个由 <a target="_blank" rel="noopener" href="https://vuejs.org/">Vue</a>、<a target="_blank" rel="noopener" href="https://github.com/vuejs/vue-router">Vue-Router</a>和 <a target="_blank" rel="noopener" href="https://webpack.js.org/">webpack</a>驱动的单页应用。对于使用过vue的人来说有较好的开发体验。</p>
 <p>VuePress 由两部分组成：第一部分是一个极简静态网站生成器，它包含由 Vue 驱动的主题系统和插件 API，另一个部分是为书写技术文档而优化的默认主题，它的诞生初衷是为了支持 Vue 及其子项目的文档需求。</p>
 <p>每一个由 VuePress 生成的页面都带有预渲染好的 HTML，也因此具有非常好的加载性能和搜索引擎优化（SEO）。同时，一旦页面被加载，Vue 将接管这些静态内容，并将其转换成一个完整的单页应用（SPA），其他的页面则会只在用户浏览到的时候才按需加载。</p>
-<h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><h4 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h4><p>  需要<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/">Node.js</a>版本&gt;= 8.6</p>
-<h4 id="1、创建工作目录"><a href="#1、创建工作目录" class="headerlink" title="1、创建工作目录"></a>1、创建工作目录</h4><p>  找一个工作目录创建项目文件夹</p>
+<h1 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h1><h2 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h2><p>  需要<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/">Node.js</a>版本&gt;= 8.6</p>
+<h3 id="1、创建工作目录"><a href="#1、创建工作目录" class="headerlink" title="1、创建工作目录"></a>1、创建工作目录</h3><p>  找一个工作目录创建项目文件夹</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir vuepressblog &amp;&amp; cd vuepressblog</span><br></pre></td></tr></table></figure>
-<h4 id="2、使用包管理器初始化"><a href="#2、使用包管理器初始化" class="headerlink" title="2、使用包管理器初始化"></a>2、使用包管理器初始化</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn init # npm init</span><br></pre></td></tr></table></figure>
-<h4 id="3、将VuePress安装为本地依赖"><a href="#3、将VuePress安装为本地依赖" class="headerlink" title="3、将VuePress安装为本地依赖"></a>3、将VuePress安装为本地依赖</h4><p>注意:<br>a、官方文档中不推荐全局安装VuePress<br>b、如果现有项目依赖webpack 3.x，推荐使用yarn而不是npm来安装VuePress。因为这种情况下npm可能会生成错误的依赖树。  </p>
+<h3 id="2、使用包管理器初始化"><a href="#2、使用包管理器初始化" class="headerlink" title="2、使用包管理器初始化"></a>2、使用包管理器初始化</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn init # npm init</span><br></pre></td></tr></table></figure>
+<h3 id="3、将VuePress安装为本地依赖"><a href="#3、将VuePress安装为本地依赖" class="headerlink" title="3、将VuePress安装为本地依赖"></a>3、将VuePress安装为本地依赖</h3><p>注意:<br>a、官方文档中不推荐全局安装VuePress<br>b、如果现有项目依赖webpack 3.x，推荐使用yarn而不是npm来安装VuePress。因为这种情况下npm可能会生成错误的依赖树。  </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add -D vuepress # npm install -D vuepress</span><br></pre></td></tr></table></figure>
-<h4 id="4、创建第一篇文档"><a href="#4、创建第一篇文档" class="headerlink" title="4、创建第一篇文档"></a>4、创建第一篇文档</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir docs &amp;&amp; echo &#x27;# Hello VuePress&#x27; &gt; docs/README.md</span><br></pre></td></tr></table></figure>
-<h4 id="5、添加scripts"><a href="#5、添加scripts" class="headerlink" title="5、添加scripts"></a>5、添加scripts</h4><p>此步骤为可选操作，建议执行<br>在package.json中添加scripts</p>
+<h3 id="4、创建第一篇文档"><a href="#4、创建第一篇文档" class="headerlink" title="4、创建第一篇文档"></a>4、创建第一篇文档</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir docs &amp;&amp; echo &#x27;# Hello VuePress&#x27; &gt; docs/README.md</span><br></pre></td></tr></table></figure>
+<h3 id="5、添加scripts"><a href="#5、添加scripts" class="headerlink" title="5、添加scripts"></a>5、添加scripts</h3><p>此步骤为可选操作，建议执行<br>在package.json中添加scripts</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;docs:dev&quot;</span>: <span class="string">&quot;vuepress dev docs&quot;</span>,</span><br><span class="line">    <span class="string">&quot;docs:build&quot;</span>: <span class="string">&quot;vuepress build docs&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="6、启动服务"><a href="#6、启动服务" class="headerlink" title="6、启动服务"></a>6、启动服务</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn docs:dev # npm run docs:dev</span><br></pre></td></tr></table></figure>
+<h3 id="6、启动服务"><a href="#6、启动服务" class="headerlink" title="6、启动服务"></a>6、启动服务</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn docs:dev # npm run docs:dev</span><br></pre></td></tr></table></figure>
 <p>这时，VuePress会在 <a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080</a> 启动一个热重载的开发服务器。 如果查看网站时出现乱码，可以查看并调整docs/README.md文档的编码字符集为utf-8。</p>
 
     
@@ -418,10 +667,10 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p><a target="_blank" rel="noopener" href="http://www.quartz-scheduler.org/">Quartz</a>是OpenSymphony开源组织在Job scheduling领域又一个开源项目。完全由 Java 编写的开源作业调度框架，为在 Java 应用程序中进行作业调度提供了简单却强大的机制。</p>
-<h3 id="下载版本包"><a href="#下载版本包" class="headerlink" title="下载版本包"></a>下载版本包</h3><p>在其<a target="_blank" rel="noopener" href="http://www.quartz-scheduler.org/downloads/">官方</a>发布的版本包中找到最新的stable版本<a target="_blank" rel="noopener" href="http://www.quartz-scheduler.org/downloads/files/quartz-2.3.0-distribution.tar.gz">quartz-2.3.0-distribution.tar.gz</a>下载并解压,可以发现官方将使用示例(examples)、文档说明(javadoc)、依赖包(lib)、授权许可说明(licenses)、以及源码(src)等都放进了版本包中。</p>
-<h3 id="授权许可"><a href="#授权许可" class="headerlink" title="授权许可"></a>授权许可</h3><p>其中引用的第三方jar包授权许可如下<br>· apache-log4j为Apache License 2.0 Embedded License(s)<br>· c3p0为GNU Lesser General Public License v2.1<br>· gf.javax.transaction.jar为GlassFish - Common Development and Distribution License<br>· slf4j-log4j12为MIT License (also X11)<br>· slf4j为MIT License (also X11)  </p>
+<h1 id="下载版本包"><a href="#下载版本包" class="headerlink" title="下载版本包"></a>下载版本包</h1><p>在其<a target="_blank" rel="noopener" href="http://www.quartz-scheduler.org/downloads/">官方</a>发布的版本包中找到最新的stable版本<a target="_blank" rel="noopener" href="http://www.quartz-scheduler.org/downloads/files/quartz-2.3.0-distribution.tar.gz">quartz-2.3.0-distribution.tar.gz</a>下载并解压,可以发现官方将使用示例(examples)、文档说明(javadoc)、依赖包(lib)、授权许可说明(licenses)、以及源码(src)等都放进了版本包中。</p>
+<h1 id="授权许可"><a href="#授权许可" class="headerlink" title="授权许可"></a>授权许可</h1><p>其中引用的第三方jar包授权许可如下<br>· apache-log4j为Apache License 2.0 Embedded License(s)<br>· c3p0为GNU Lesser General Public License v2.1<br>· gf.javax.transaction.jar为GlassFish - Common Development and Distribution License<br>· slf4j-log4j12为MIT License (also X11)<br>· slf4j为MIT License (also X11)  </p>
 <p>Quartz自己的授权许可为Apache License 2.0</p>
-<h3 id="组件示例"><a href="#组件示例" class="headerlink" title="组件示例"></a>组件示例</h3><p>官方共列举了15个示例，分别为<br>· example1 -  Your first Quartz Program<br>· example2 -  Simple Triggers<br>· example3 -  Cron Triggers<br>· example4 -  Job State and Job Parameters<br>· example5 -  Job Misfires<br>· example6 -  Handling Job Exceptions<br>· example7 -  Interrupting Jobs<br>· example8 -  How to use Quartz Calendars<br>· example9 -  Using Job Listeners<br>· example10 - Using Quartz Plug-Ins<br>· example11 - Loading Up Quartz with Many Jobs<br>· example12 - Remoting with Quartz using RMI<br>· example13 - Clustering Quartz and JDBC Job Stores<br>· example14 - Quartz Trigger Priorities<br>· example15 - Clustering Quartz and Terracotta Job Store<br>这些示例介绍了quartz的基本用途和相关方法</p>
+<h1 id="组件示例"><a href="#组件示例" class="headerlink" title="组件示例"></a>组件示例</h1><p>官方共列举了15个示例，分别为<br>· example1 -  Your first Quartz Program<br>· example2 -  Simple Triggers<br>· example3 -  Cron Triggers<br>· example4 -  Job State and Job Parameters<br>· example5 -  Job Misfires<br>· example6 -  Handling Job Exceptions<br>· example7 -  Interrupting Jobs<br>· example8 -  How to use Quartz Calendars<br>· example9 -  Using Job Listeners<br>· example10 - Using Quartz Plug-Ins<br>· example11 - Loading Up Quartz with Many Jobs<br>· example12 - Remoting with Quartz using RMI<br>· example13 - Clustering Quartz and JDBC Job Stores<br>· example14 - Quartz Trigger Priorities<br>· example15 - Clustering Quartz and Terracotta Job Store<br>这些示例介绍了quartz的基本用途和相关方法</p>
 
     
 
@@ -508,13 +757,13 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。此外<a target="_blank" rel="noopener" href="https://hexo.io/themes/index.html">Hexo官方站点</a>收录和提供了大量主题供使用者借鉴以及使用。因此，使用者如果对于主题样式没有特别要求，那么在选择并配置好想要的主题之后，可以更加关注于博客内容本身的创作而不用纠结页面布局效果。</p>
-<h3 id="必备环境"><a href="#必备环境" class="headerlink" title="必备环境"></a>必备环境</h3><p>· Node.js (Node.js 版本需不低于 10.13，建议使用 Node.js 12.0 及以上版本)<br>· Git</p>
-<h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><p>必备环境准备好之后，开始安装hexo<br>· 执行以下命令</p>
+<h1 id="必备环境"><a href="#必备环境" class="headerlink" title="必备环境"></a>必备环境</h1><p>· Node.js (Node.js 版本需不低于 10.13，建议使用 Node.js 12.0 及以上版本)<br>· Git</p>
+<h1 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h1><p>必备环境准备好之后，开始安装hexo<br>· 执行以下命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 <p>其中-g表示将当前程序包上下文（即当前工作目录）安装为全局程序包。  </p>
 <p>· 或者执行以下命令，仅局部安装hexo包</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo</span><br></pre></td></tr></table></figure>
-<h3 id="执行hexo"><a href="#执行hexo" class="headerlink" title="执行hexo"></a>执行hexo</h3><p>执行以下命令即可执行hexo相关功能</p>
+<h1 id="执行hexo"><a href="#执行hexo" class="headerlink" title="执行hexo"></a>执行hexo</h1><p>执行以下命令即可执行hexo相关功能</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx hexo &lt;<span class="built_in">command</span>&gt;</span><br></pre></td></tr></table></figure>
 
 
@@ -789,11 +1038,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">关于VuePress</a>
+                <a href="javascript:void(0)" class="js-tag color2">Hello World</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Hello World</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -802,6 +1051,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">关于quartz组件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">常用vuepress工具集说明</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">关于VuePress</a>
               </li>
             
             <div class="clearfix"></div>

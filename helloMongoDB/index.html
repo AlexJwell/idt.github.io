@@ -6,18 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://alexjwell.github.io">
-  <title>Archives: 2022/1 | Alex的个人博客</title>
+  <title>helloMongoDB | Alex的个人博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="这个世界希望你成为普通人，它会千方百计地吸引你。但别让这种事情发生，你必须为自己的与众不同付出代价，但这是值得的">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Alex的个人博客">
-<meta property="og:url" content="https://alexjwell.github.io/archives/2022/01/index.html">
+  <meta name="description" content="一、创建源文件在&#x2F;etc&#x2F;yum.repos.d&#x2F; 目录下新建源文件mongodb-org-4.2.repo,并启动MongoDB源。源文件配置如下: 123456[mongodb-org-4.2]name&#x3D;MongoDB Repositorybaseurl&#x3D;https:&#x2F;&#x2F;repo.mongodb.org&#x2F;yum&#x2F;redhat&#x2F;$releasever&#x2F;mongodb-org&#x2F;4.2&#x2F;x86_64">
+<meta property="og:type" content="article">
+<meta property="og:title" content="helloMongoDB">
+<meta property="og:url" content="https://alexjwell.github.io/helloMongoDB/index.html">
 <meta property="og:site_name" content="Alex的个人博客">
-<meta property="og:description" content="这个世界希望你成为普通人，它会千方百计地吸引你。但别让这种事情发生，你必须为自己的与众不同付出代价，但这是值得的">
+<meta property="og:description" content="一、创建源文件在&#x2F;etc&#x2F;yum.repos.d&#x2F; 目录下新建源文件mongodb-org-4.2.repo,并启动MongoDB源。源文件配置如下: 123456[mongodb-org-4.2]name&#x3D;MongoDB Repositorybaseurl&#x3D;https:&#x2F;&#x2F;repo.mongodb.org&#x2F;yum&#x2F;redhat&#x2F;$releasever&#x2F;mongodb-org&#x2F;4.2&#x2F;x86_64">
 <meta property="og:locale">
+<meta property="article:published_time" content="2022-01-25T06:51:28.000Z">
+<meta property="article:modified_time" content="2022-02-10T08:15:17.682Z">
 <meta property="article:author" content="Alex">
+<meta property="article:tag" content="MongoDB">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/idt.github.io/atom.xml" title="Alex的个人博客" type="application/atom+xml">
@@ -176,41 +179,174 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-helloMongoDB" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/idt.github.io/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/idt.github.io/helloMongoDB/" class="archive-article-date">
-        <time datetime="2022-01-25T06:51:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-25</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/idt.github.io/helloMongoDB/" target="_blank">helloMongoDB</a>
   
+    <h1 class="article-title" itemprop="name">
+      helloMongoDB
     </h1>
   
 
 
-        <div class="article-info info-on-right">
+  
+  
+<a href="/idt.github.io/helloMongoDB/" class="archive-article-date">
+        <time datetime="2022-01-25T06:51:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-25</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.2k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">4分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="一、创建源文件"><a href="#一、创建源文件" class="headerlink" title="一、创建源文件"></a>一、创建源文件</h1><p>在<code>/etc/yum.repos.d/</code> 目录下新建源文件<code>mongodb-org-4.2.repo</code>,并启动MongoDB源。<br>源文件配置如下:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[mongodb-org-4.2]</span><br><span class="line">name=MongoDB Repository</span><br><span class="line">baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc</span><br></pre></td></tr></table></figure>
+<p>如果想安装其他版本的MongoDB,则需要修改配置文件中的4.2版本号。</p>
+<h1 id="二、安装MongoDB-org软件包"><a href="#二、安装MongoDB-org软件包" class="headerlink" title="二、安装MongoDB-org软件包"></a>二、安装MongoDB-org软件包</h1><p>执行命令:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf install mongodb-org</span><br><span class="line"><span class="meta">#</span><span class="bash">sudo yum install mongodb-org</span></span><br></pre></td></tr></table></figure>
+<p>如果需要指定安装版本，则可执行如下命令:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y mongodb-org-4.2.6 mongodb-org-server-4.2.6 mongodb-org-shell-4.2.6 mongodb-org-mongos-4.2.6 mongodb-org-tools-4.2.6</span><br></pre></td></tr></table></figure>
+<h1 id="三、运行MongoDB"><a href="#三、运行MongoDB" class="headerlink" title="三、运行MongoDB"></a>三、运行MongoDB</h1><h2 id="1、资源限制"><a href="#1、资源限制" class="headerlink" title="1、资源限制"></a>1、资源限制</h2><p>大多数类Unix操作系统都限制了会话可能使用的系统资源。这些限制可能会对MongoDB的运行产生负面影响。详见<a target="_blank" rel="noopener" href="https://mongodb.net.cn/manual/reference/ulimit/">官方说明</a>。</p>
+<h2 id="2、数据路径设置"><a href="#2、数据路径设置" class="headerlink" title="2、数据路径设置"></a>2、数据路径设置</h2><p>默认情况下MongoDB使用mongod用户运行，并使用以下默认目录：<br>· /var/lib/mongo (数据目录)<br>· /var/log/mongodb (日志目录)</p>
+<h3 id="1）-使用默认目录的情况"><a href="#1）-使用默认目录的情况" class="headerlink" title="1） 使用默认目录的情况"></a>1） 使用默认目录的情况</h3><p>如果通过程序包管理器安装，将创建默认目录，并将这些目录的所有者和组设置为mongod。   </p>
+<p>如果通过下载压缩包进行安装，未创建默认的MongoDB目录。要创建MongoDB数据和日志目录：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /var/lib/mongo</span><br><span class="line">sudo mkdir -p /var/log/mongodb</span><br></pre></td></tr></table></figure>
+<p>然后将这些目录的所有者和组设置为mongod：  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R mongod:mongod &lt;directory&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2）-使用非默认目录的情况"><a href="#2）-使用非默认目录的情况" class="headerlink" title="2） 使用非默认目录的情况"></a>2） 使用非默认目录的情况</h3><p>要使用默认目录以外的数据目录和/或日志目录：   </p>
+<p>1、创建一个或多个新目录。   </p>
+<p>2、编辑配置文件，/etc/mongod.conf 并相应修改以下字段：<br>· storage.dbPath 指定新的数据目录路径（例如/some/data/directory）<br>· systemLog.path 指定新的日志文件路径（例如/some/log/directory/mongod.log）   </p>
+<p>3、确保运行MongoDB的用户有权访问一个或多个目录：   </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R mongod:mongod &lt;directory&gt;</span><br></pre></td></tr></table></figure>
+<p>如果更改运行MongoDB进程的用户，则必须授予新用户访问这些目录的权限。</p>
+<p>4、如果强制配置SELinux。可参考<a target="_blank" rel="noopener" href="https://mongodb.net.cn/manual/tutorial/install-mongodb-on-red-hat/#install-rhel-configure-selinux">链接</a></p>
+<h2 id="3、启动程序"><a href="#3、启动程序" class="headerlink" title="3、启动程序"></a>3、启动程序</h2><p>以下步骤均在默认设置的基础上执行。</p>
+<h3 id="1）初始化系统"><a href="#1）初始化系统" class="headerlink" title="1）初始化系统"></a>1）初始化系统</h3><p>需要根据不同的linux版本进行初始化。<br>先确定平台使用哪个初始化系统，执行以下命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps --no-headers -o comm 1</span><br></pre></td></tr></table></figure>
+<p>根据结果在下面选择适当的选项卡：<br>· systemd -选择下面的systemd (systemctl)标签。<br>· init -选择下面的system V init (服务)标签。<br>· systemd （systemctl）<br>· 系统V初始化 （服务）</p>
+<h4 id="a、启动MongoDB"><a href="#a、启动MongoDB" class="headerlink" title="a、启动MongoDB"></a>a、启动MongoDB</h4><p>可以mongod通过执行以下命令来启动该过程：   </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start mongod</span><br></pre></td></tr></table></figure>
+<p>如果出现以下类似错误：<br><code>Failed to start mongod.service: Unit mongod.service not found.</code></p>
+<p>执行命令：   </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+<p>然后执行上面的启动命令。</p>
+<h4 id="b、验证MongoDB已经启动成功"><a href="#b、验证MongoDB已经启动成功" class="headerlink" title="b、验证MongoDB已经启动成功"></a>b、验证MongoDB已经启动成功</h4><p>通过以下命令验证服务启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status mongod</span><br></pre></td></tr></table></figure>
+<p>通过以下命令确保系统重启之后启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable mongod</span><br></pre></td></tr></table></figure>
+<h4 id="c、停止MongoDB"><a href="#c、停止MongoDB" class="headerlink" title="c、停止MongoDB"></a>c、停止MongoDB</h4><p>执行以下命令重启MongoDB</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart mongod</span><br></pre></td></tr></table></figure>
+<p>可以通过查看<code>/var/log/mongodb/mongod.log</code>文件中的输出来跟踪错误或重要消息的处理状态。</p>
+<h4 id="d、开始使用MongoDB"><a href="#d、开始使用MongoDB" class="headerlink" title="d、开始使用MongoDB"></a>d、开始使用MongoDB</h4><p>执行以下命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongod start </span><br></pre></td></tr></table></figure>
+<h4 id="e、验证MongoDB已成功启动"><a href="#e、验证MongoDB已成功启动" class="headerlink" title="e、验证MongoDB已成功启动"></a>e、验证MongoDB已成功启动</h4><p>可以通过查看日志文件<code>/var/log/mongodb/mongod.log</code>验证是否成功启动。<br>默认情况下，端口在<code>/etc/mongod.conf</code>中进行了配置。<br>并且可以通过以下命令确保MongoDB将系统重启后启动：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chkconfig mongod on</span><br></pre></td></tr></table></figure>
+<h4 id="f、停止MongoDB"><a href="#f、停止MongoDB" class="headerlink" title="f、停止MongoDB"></a>f、停止MongoDB</h4><p>执行命令终止服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongod stop</span><br></pre></td></tr></table></figure>
+<h4 id="g、重启MongoDB"><a href="#g、重启MongoDB" class="headerlink" title="g、重启MongoDB"></a>g、重启MongoDB</h4><p>执行命令重启命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongod restart</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、卸载MongoDB"><a href="#4、卸载MongoDB" class="headerlink" title="4、卸载MongoDB"></a>4、卸载MongoDB</h2><h3 id="1）停止MongoDB"><a href="#1）停止MongoDB" class="headerlink" title="1）停止MongoDB"></a>1）停止MongoDB</h3><p>执行命令以停止服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongod stop</span><br></pre></td></tr></table></figure>
+<h3 id="2）删除软件包"><a href="#2）删除软件包" class="headerlink" title="2）删除软件包"></a>2）删除软件包</h3><p>删除以前安装的所有MongoDB软件包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum erase $(rpm -qa | grep mongodb-org)</span><br></pre></td></tr></table></figure>
+<h3 id="3）删除数据目录"><a href="#3）删除数据目录" class="headerlink" title="3）删除数据目录"></a>3）删除数据目录</h3><p>删除MongoDB数据库和日志文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -r /var/log/mongodb</span><br><span class="line">sudo rm -r /var/lib/mongo</span><br></pre></td></tr></table></figure>
+
+<h2 id="5、注意事项"><a href="#5、注意事项" class="headerlink" title="5、注意事项"></a>5、注意事项</h2><p>默认情况下，MongoDB启动时将其bindIp设置为 127.0.0.1，绑定到localhost网络接口。这意味着mongod只能接受来自同一计算机上运行的客户端的连接。除非将此值设置为有效的网络接口，否则远程客户端将无法连接到mongod，并且mongod不能初始化副本集。</p>
+<p>此参数可配置：<br>在MongoDB配置文件中，带有bindIp或通过命令行参数 –bind_ip</p>
+<p>但是，一旦将服务ip绑定为可公共访问的ip之前，则需要进行安全策略考虑,阅读完整的<a target="_blank" rel="noopener" href="https://mongodb.net.cn/manual/administration/security-checklist/">安全清单</a>，包括且不限于<a target="_blank" rel="noopener" href="https://mongodb.net.cn/manual/administration/security-checklist/#checklist-auth">启用身份验证</a>和<a target="_blank" rel="noopener" href="https://mongodb.net.cn/manual/core/security-hardening/">强化网络基础架构</a>等。</p>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/idt.github.io/img/alipay.bmp">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/idt.github.io/img/weixin.bmp">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          Alex
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://alexjwell.github.io/idt.github.io/helloMongoDB/" title="helloMongoDB" target="_blank">https://alexjwell.github.io/idt.github.io/helloMongoDB/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -222,191 +358,107 @@
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://alexjwell.github.io/helloMongoDB/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/idt.github.io/vuepressTools/" class="archive-article-date">
-        <time datetime="2022-01-24T03:32:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-24</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/idt.github.io/vuepressTools/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vuepressTools</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/idt.github.io/vuepressTools/" target="_blank">vuepressTools</a>
-  
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">常用vuepress工具集说明</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/idt.github.io/hexoToGitHub/" class="archive-article-date">
-        <time datetime="2022-01-24T01:47:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-24</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/idt.github.io/hexoToGitHub/" target="_blank">hexoToGitHub</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">hexoToGitHub</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/idt.github.io/hello-vuepress/" class="archive-article-date">
-        <time datetime="2022-01-21T02:05:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-21</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/idt.github.io/hello-vuepress/" target="_blank">hello-VuePress</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">关于VuePress</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/idt.github.io/quartzRead/" class="archive-article-date">
-        <time datetime="2022-01-13T03:08:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-13</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/idt.github.io/quartzRead/" target="_blank">关于quartz组件</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">关于quartz组件</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+
 
 
           </div>
@@ -435,8 +487,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
