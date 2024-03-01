@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://alexjwell.github.io">
-  <title>关于quartz组件 | Alex的个人博客</title>
+  <title>docker安装 | Alex的个人博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="Quartz是OpenSymphony开源组织在Job scheduling领域又一个开源项目。完全由 Java 编写的开源作业调度框架，为在 Java 应用程序中进行作业调度提供了简单却强大的机制。 下载版本包在其官方发布的版本包中找到最新的stable版本quartz-2.3.0-distribution.tar.gz下载并解压,可以发现官方将使用示例(examples)、文档说明(javad">
+  <meta name="description" content="一、Anolis OS 7.9与docker简介1、Anolis OS 7.9官方首页:龙蜥社区https:&#x2F;&#x2F;openanolis.cn&#x2F;龙蜥操作系统(Anolis OS) 7 是龙蜥社区(OpenAnolis)发行的开源Linux发行版，与CentOS 7 100%兼容，支持多计算架构，提供稳定、高性能、安全、可靠的操作系统。龙蜥操作系统(Anolis OS)  7.9是继龙蜥操作系统(Ano">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于quartz组件">
-<meta property="og:url" content="https://alexjwell.github.io/quartzRead/index.html">
+<meta property="og:title" content="docker安装">
+<meta property="og:url" content="https://alexjwell.github.io/docker%E5%AE%89%E8%A3%85/index.html">
 <meta property="og:site_name" content="Alex的个人博客">
-<meta property="og:description" content="Quartz是OpenSymphony开源组织在Job scheduling领域又一个开源项目。完全由 Java 编写的开源作业调度框架，为在 Java 应用程序中进行作业调度提供了简单却强大的机制。 下载版本包在其官方发布的版本包中找到最新的stable版本quartz-2.3.0-distribution.tar.gz下载并解压,可以发现官方将使用示例(examples)、文档说明(javad">
+<meta property="og:description" content="一、Anolis OS 7.9与docker简介1、Anolis OS 7.9官方首页:龙蜥社区https:&#x2F;&#x2F;openanolis.cn&#x2F;龙蜥操作系统(Anolis OS) 7 是龙蜥社区(OpenAnolis)发行的开源Linux发行版，与CentOS 7 100%兼容，支持多计算架构，提供稳定、高性能、安全、可靠的操作系统。龙蜥操作系统(Anolis OS)  7.9是继龙蜥操作系统(Ano">
 <meta property="og:locale">
-<meta property="article:published_time" content="2022-01-13T03:08:18.000Z">
-<meta property="article:modified_time" content="2022-02-10T02:53:15.227Z">
+<meta property="article:published_time" content="2022-02-21T03:05:17.000Z">
+<meta property="article:modified_time" content="2024-03-01T08:38:46.806Z">
 <meta property="article:author" content="Alex">
-<meta property="article:tag" content="关于quartz组件">
+<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/idt.github.io/atom.xml" title="Alex的个人博客" type="application/atom+xml">
@@ -179,22 +179,22 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-quartzRead" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-docker安装" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      关于quartz组件
+      docker安装
     </h1>
   
 
 
   
   
-<a href="/idt.github.io/quartzRead/" class="archive-article-date">
-        <time datetime="2022-01-13T03:08:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-13</time>
+<a href="/idt.github.io/docker%E5%AE%89%E8%A3%85/" class="archive-article-date">
+        <time datetime="2022-02-21T03:05:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-21</time>
 </a>
 
   
@@ -207,7 +207,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">311字</span>
+      <span class="post-count">789字</span>
     </span>
   </span>
 
@@ -216,7 +216,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">3分</span>
     </span>
   </span>
 </div>
@@ -227,12 +227,47 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p><a target="_blank" rel="noopener" href="http://www.quartz-scheduler.org/">Quartz</a>是OpenSymphony开源组织在Job scheduling领域又一个开源项目。完全由 Java 编写的开源作业调度框架，为在 Java 应用程序中进行作业调度提供了简单却强大的机制。</p>
-<h1 id="下载版本包"><a href="#下载版本包" class="headerlink" title="下载版本包"></a>下载版本包</h1><p>在其<a target="_blank" rel="noopener" href="http://www.quartz-scheduler.org/downloads/">官方</a>发布的版本包中找到最新的stable版本<a target="_blank" rel="noopener" href="http://www.quartz-scheduler.org/downloads/files/quartz-2.3.0-distribution.tar.gz">quartz-2.3.0-distribution.tar.gz</a>下载并解压,可以发现官方将使用示例(examples)、文档说明(javadoc)、依赖包(lib)、授权许可说明(licenses)、以及源码(src)等都放进了版本包中。</p>
-<h1 id="授权许可"><a href="#授权许可" class="headerlink" title="授权许可"></a>授权许可</h1><p>其中引用的第三方jar包授权许可如下<br>· apache-log4j为Apache License 2.0 Embedded License(s)<br>· c3p0为GNU Lesser General Public License v2.1<br>· gf.javax.transaction.jar为GlassFish - Common Development and Distribution License<br>· slf4j-log4j12为MIT License (also X11)<br>· slf4j为MIT License (also X11)  </p>
-<p>Quartz自己的授权许可为Apache License 2.0</p>
-<h1 id="组件示例"><a href="#组件示例" class="headerlink" title="组件示例"></a>组件示例</h1><p>官方共列举了15个示例，分别为<br>· example1 -  Your first Quartz Program<br>· example2 -  Simple Triggers<br>· example3 -  Cron Triggers<br>· example4 -  Job State and Job Parameters<br>· example5 -  Job Misfires<br>· example6 -  Handling Job Exceptions<br>· example7 -  Interrupting Jobs<br>· example8 -  How to use Quartz Calendars<br>· example9 -  Using Job Listeners<br>· example10 - Using Quartz Plug-Ins<br>· example11 - Loading Up Quartz with Many Jobs<br>· example12 - Remoting with Quartz using RMI<br>· example13 - Clustering Quartz and JDBC Job Stores<br>· example14 - Quartz Trigger Priorities<br>· example15 - Clustering Quartz and Terracotta Job Store<br>这些示例介绍了quartz的基本用途和相关方法</p>
-
+    <h1 id="一、Anolis-OS-7-9与docker简介"><a href="#一、Anolis-OS-7-9与docker简介" class="headerlink" title="一、Anolis OS 7.9与docker简介"></a>一、Anolis OS 7.9与docker简介</h1><h2 id="1、Anolis-OS-7-9官方首页-龙蜥社区https-openanolis-cn"><a href="#1、Anolis-OS-7-9官方首页-龙蜥社区https-openanolis-cn" class="headerlink" title="1、Anolis OS 7.9官方首页:龙蜥社区https://openanolis.cn/"></a>1、Anolis OS 7.9官方首页:龙蜥社区<a target="_blank" rel="noopener" href="https://openanolis.cn/">https://openanolis.cn/</a></h2><p>龙蜥操作系统(Anolis OS) 7 是龙蜥社区(OpenAnolis)发行的开源Linux发行版，与CentOS 7 100%兼容，<br>支持多计算架构，提供稳定、高性能、安全、可靠的操作系统。<br>龙蜥操作系统(Anolis OS)  7.9是继龙蜥操作系统(Anolis OS)  7系列后发布的第二个版本，<br>支持x86_64和aarch64架构，搭载双内核RHCK（RHEL Compatible Kernel）和 ANCK（OpenAnolis Cloud Kernel），<br>其中ANCK是由社区Cloud Kernel SIG组基于上游4.19 LTS kernel研发，提供对稳定，性能，隔离能力的增强，<br>和飞腾、海光、兆芯、鲲鹏芯片的完善支持。</p>
+<h2 id="2、docker官方首页-https-www-docker-com"><a href="#2、docker官方首页-https-www-docker-com" class="headerlink" title="2、docker官方首页:https://www.docker.com/"></a>2、docker官方首页:<a target="_blank" rel="noopener" href="https://www.docker.com/">https://www.docker.com/</a></h2><p>Docker是一个开源的引擎，可以轻松的为任何应用创建一个轻量级的、可移植的、自给自足的容器。开发者在笔记本上编译测试通过的容器可以批量地在生产环境中部署，包括VMs（虚拟机）、 bare metal、OpenStack 集群和其他的基础应用平台。</p>
+<h1 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h1><h2 id="1、环境"><a href="#1、环境" class="headerlink" title="1、环境"></a>1、环境</h2><p>AnolisOS7.9系统，并且当前操作用户已经切换为root用户。</p>
+<h2 id="2、安装"><a href="#2、安装" class="headerlink" title="2、安装"></a>2、安装</h2><p>执行安装命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install docker</span><br></pre></td></tr></table></figure>
+<p>系统将会自动下载安装docker以及相关依赖，直到控制台提示<code>完毕！</code>，即表示安装成功。</p>
+<p>查看docker版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker version</span><br></pre></td></tr></table></figure>
+<p>结果如下所示，下面提示无法连接守护进程是因为目前docker服务还未启动。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># docker version</span></span><br><span class="line">Client:</span><br><span class="line"> Version:         1.13.1</span><br><span class="line"> API version:     1.26</span><br><span class="line"> Package version: </span><br><span class="line">Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?</span><br></pre></td></tr></table></figure>
+<h2 id="3、启动"><a href="#3、启动" class="headerlink" title="3、启动"></a>3、启动</h2><p>执行启动命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service docker start</span><br></pre></td></tr></table></figure>
+<p>执行完毕后查看docker运行状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service docker status</span><br></pre></td></tr></table></figure>
+<p>结果如下所示,说明docker启动成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># service docker status</span></span><br><span class="line">Redirecting to /bin/systemctl status docker.service</span><br><span class="line">● docker.service - Docker Application Container Engine</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/docker.service; disabled; vendor preset: disabled)</span><br><span class="line">   Active: active (running) since 五 2022-04-28 21:00:08 CST; 2min 55s ago</span><br><span class="line">     Docs: http://docs.docker.com</span><br><span class="line"> Main PID: 6190 (dockerd-current)</span><br><span class="line">    Tasks: 21</span><br><span class="line">   CGroup: /system.slice/docker.service</span><br><span class="line">           ├─6190 /usr/bin/dockerd-current --add-runtime docker-runc=/usr/libexec/docker/docker-runc-current --def...</span><br><span class="line">           └─6198 /usr/bin/docker-containerd-current -l unix:///var/run/docker/libcontainerd/docker-containerd.soc...</span><br></pre></td></tr></table></figure>
+<h2 id="4、设置开机自启动docker"><a href="#4、设置开机自启动docker" class="headerlink" title="4、设置开机自启动docker"></a>4、设置开机自启动docker</h2><p>查看当前docker服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl list-unit-files</span><br></pre></td></tr></table></figure>
+<p>找到docker服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker.service                                disabled</span><br></pre></td></tr></table></figure>
+<p>执行命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure>
+<p>重新查看docker服务，如下状态即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]<span class="comment"># systemctl list-unit-files</span></span><br><span class="line">...</span><br><span class="line">docker.service                                enabled </span><br></pre></td></tr></table></figure>
+<h2 id="5、配置镜像加速"><a href="#5、配置镜像加速" class="headerlink" title="5、配置镜像加速"></a>5、配置镜像加速</h2><p><strong>说明：</strong> 由于国内从 DockerHub 拉取镜像有时会遇到困难，配置镜像加速可以缓解这一情况，但不是必须的，可视实际情况选择。<br>编辑文件daemon.json</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
+<p>加入镜像配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;registry-mirrors&quot;</span>:[<span class="string">&quot;https://docker.mirrors.ustc.edu.cn/&quot;</span>]&#125;</span><br></pre></td></tr></table></figure>
+<p>其中镜像可选</p>
+<ul>
+<li>科大镜像：<a target="_blank" rel="noopener" href="https://docker.mirrors.ustc.edu.cn/">https://docker.mirrors.ustc.edu.cn/</a></li>
+<li>网易：<a target="_blank" rel="noopener" href="https://hub-mirror.c.163.com/">https://hub-mirror.c.163.com/</a></li>
+<li>阿里云(阿里云需要注册)：https://&lt;你的ID&gt;.mirror.aliyuncs.com</li>
+<li>七牛云加速器：<a target="_blank" rel="noopener" href="https://reg-mirror.qiniu.com/">https://reg-mirror.qiniu.com</a></li>
+</ul>
+<p>重启docker服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+<p>查看docker配置是否成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker info</span><br></pre></td></tr></table></figure>
+<p>找到以下配置说明配置完毕</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Registry Mirrors:</span><br><span class="line"> https://docker.mirrors.ustc.edu.cn/</span><br></pre></td></tr></table></figure>
     
 
     
@@ -278,7 +313,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://alexjwell.github.io/idt.github.io/quartzRead/" title="关于quartz组件" target="_blank">https://alexjwell.github.io/idt.github.io/quartzRead/</a>
+          <a href="https://alexjwell.github.io/idt.github.io/docker安装/" title="docker安装" target="_blank">https://alexjwell.github.io/idt.github.io/docker安装/</a>
         </li>
         
         <li>
@@ -300,7 +335,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">关于quartz组件</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
         		</li>
       		
 		</ul>
@@ -356,7 +391,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://alexjwell.github.io/quartzRead/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://alexjwell.github.io/docker%E5%AE%89%E8%A3%85/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -371,18 +406,9 @@
 
 <nav id="article-nav">
   
-    <a href="/idt.github.io/hello-vuepress/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          hello-VuePress
-        
-      </div>
-    </a>
   
-  
-    <a href="/idt.github.io/HelloHexo/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">关于Hexo</div>
+    <a href="/idt.github.io/helloMongoDB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">helloMongoDB</div>
       <i class="icon-circle-right"></i>
     </a>
   

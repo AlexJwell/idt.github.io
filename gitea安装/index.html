@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://alexjwell.github.io">
-  <title>关于quartz组件 | Alex的个人博客</title>
+  <title>gitea安装 | Alex的个人博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="Quartz是OpenSymphony开源组织在Job scheduling领域又一个开源项目。完全由 Java 编写的开源作业调度框架，为在 Java 应用程序中进行作业调度提供了简单却强大的机制。 下载版本包在其官方发布的版本包中找到最新的stable版本quartz-2.3.0-distribution.tar.gz下载并解压,可以发现官方将使用示例(examples)、文档说明(javad">
+  <meta name="description" content="基础环境 操作系统：Anolis8.8 数据库：Postgresql  环境准备数据库准备postgresql数据库安装，此文略过。 用户设置 123456#在数据库服务器上，以超级用户身份登录到数据库控制台：su -c &quot;psql&quot; - postgres#创建具有登录权限和密码的数据库用户（在 PostgreSQL 术语中称为角色）。请使用安全的、强密码，而不是下面的 &amp;#x">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于quartz组件">
-<meta property="og:url" content="https://alexjwell.github.io/quartzRead/index.html">
+<meta property="og:title" content="gitea安装">
+<meta property="og:url" content="https://alexjwell.github.io/gitea%E5%AE%89%E8%A3%85/index.html">
 <meta property="og:site_name" content="Alex的个人博客">
-<meta property="og:description" content="Quartz是OpenSymphony开源组织在Job scheduling领域又一个开源项目。完全由 Java 编写的开源作业调度框架，为在 Java 应用程序中进行作业调度提供了简单却强大的机制。 下载版本包在其官方发布的版本包中找到最新的stable版本quartz-2.3.0-distribution.tar.gz下载并解压,可以发现官方将使用示例(examples)、文档说明(javad">
+<meta property="og:description" content="基础环境 操作系统：Anolis8.8 数据库：Postgresql  环境准备数据库准备postgresql数据库安装，此文略过。 用户设置 123456#在数据库服务器上，以超级用户身份登录到数据库控制台：su -c &quot;psql&quot; - postgres#创建具有登录权限和密码的数据库用户（在 PostgreSQL 术语中称为角色）。请使用安全的、强密码，而不是下面的 &amp;#x">
 <meta property="og:locale">
-<meta property="article:published_time" content="2022-01-13T03:08:18.000Z">
-<meta property="article:modified_time" content="2022-02-10T02:53:15.227Z">
+<meta property="article:published_time" content="2022-01-21T02:05:17.000Z">
+<meta property="article:modified_time" content="2024-03-01T08:39:23.491Z">
 <meta property="article:author" content="Alex">
-<meta property="article:tag" content="关于quartz组件">
+<meta property="article:tag" content="gitea">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/idt.github.io/atom.xml" title="Alex的个人博客" type="application/atom+xml">
@@ -179,22 +179,22 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-quartzRead" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-gitea安装" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      关于quartz组件
+      gitea安装
     </h1>
   
 
 
   
   
-<a href="/idt.github.io/quartzRead/" class="archive-article-date">
-        <time datetime="2022-01-13T03:08:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-13</time>
+<a href="/idt.github.io/gitea%E5%AE%89%E8%A3%85/" class="archive-article-date">
+        <time datetime="2022-01-21T02:05:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-21</time>
 </a>
 
   
@@ -207,7 +207,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">311字</span>
+      <span class="post-count">931字</span>
     </span>
   </span>
 
@@ -216,7 +216,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">4分</span>
     </span>
   </span>
 </div>
@@ -227,11 +227,32 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p><a target="_blank" rel="noopener" href="http://www.quartz-scheduler.org/">Quartz</a>是OpenSymphony开源组织在Job scheduling领域又一个开源项目。完全由 Java 编写的开源作业调度框架，为在 Java 应用程序中进行作业调度提供了简单却强大的机制。</p>
-<h1 id="下载版本包"><a href="#下载版本包" class="headerlink" title="下载版本包"></a>下载版本包</h1><p>在其<a target="_blank" rel="noopener" href="http://www.quartz-scheduler.org/downloads/">官方</a>发布的版本包中找到最新的stable版本<a target="_blank" rel="noopener" href="http://www.quartz-scheduler.org/downloads/files/quartz-2.3.0-distribution.tar.gz">quartz-2.3.0-distribution.tar.gz</a>下载并解压,可以发现官方将使用示例(examples)、文档说明(javadoc)、依赖包(lib)、授权许可说明(licenses)、以及源码(src)等都放进了版本包中。</p>
-<h1 id="授权许可"><a href="#授权许可" class="headerlink" title="授权许可"></a>授权许可</h1><p>其中引用的第三方jar包授权许可如下<br>· apache-log4j为Apache License 2.0 Embedded License(s)<br>· c3p0为GNU Lesser General Public License v2.1<br>· gf.javax.transaction.jar为GlassFish - Common Development and Distribution License<br>· slf4j-log4j12为MIT License (also X11)<br>· slf4j为MIT License (also X11)  </p>
-<p>Quartz自己的授权许可为Apache License 2.0</p>
-<h1 id="组件示例"><a href="#组件示例" class="headerlink" title="组件示例"></a>组件示例</h1><p>官方共列举了15个示例，分别为<br>· example1 -  Your first Quartz Program<br>· example2 -  Simple Triggers<br>· example3 -  Cron Triggers<br>· example4 -  Job State and Job Parameters<br>· example5 -  Job Misfires<br>· example6 -  Handling Job Exceptions<br>· example7 -  Interrupting Jobs<br>· example8 -  How to use Quartz Calendars<br>· example9 -  Using Job Listeners<br>· example10 - Using Quartz Plug-Ins<br>· example11 - Loading Up Quartz with Many Jobs<br>· example12 - Remoting with Quartz using RMI<br>· example13 - Clustering Quartz and JDBC Job Stores<br>· example14 - Quartz Trigger Priorities<br>· example15 - Clustering Quartz and Terracotta Job Store<br>这些示例介绍了quartz的基本用途和相关方法</p>
+    <h1 id="基础环境"><a href="#基础环境" class="headerlink" title="基础环境"></a>基础环境</h1><ul>
+<li>操作系统：Anolis8.8</li>
+<li>数据库：Postgresql</li>
+</ul>
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><h2 id="数据库准备"><a href="#数据库准备" class="headerlink" title="数据库准备"></a>数据库准备</h2><p>postgresql数据库安装，此文略过。</p>
+<p>用户设置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">在数据库服务器上，以超级用户身份登录到数据库控制台：</span></span><br><span class="line">su -c &quot;psql&quot; - postgres</span><br><span class="line"><span class="meta">#</span><span class="bash">创建具有登录权限和密码的数据库用户（在 PostgreSQL 术语中称为角色）。请使用安全的、强密码，而不是下面的 <span class="string">&#x27;gitea&#x27;</span></span></span><br><span class="line">CREATE ROLE gitea WITH LOGIN PASSWORD &#x27;gitea&#x27;;</span><br><span class="line"><span class="meta">#</span><span class="bash">使用 UTF-8 字符集创建数据库，并由之前创建的数据库用户拥有。可以根据预期内容使用任何 libc 排序规则，使用 LC_COLLATE 和 LC_CTYPE 参数指定</span></span><br><span class="line">CREATE DATABASE giteadb WITH OWNER gitea TEMPLATE template0 ENCODING UTF8 LC_COLLATE &#x27;en_US.UTF-8&#x27; LC_CTYPE &#x27;en_US.UTF-8&#x27;;</span><br></pre></td></tr></table></figure>
+<h2 id="新建组、用户和工作路径"><a href="#新建组、用户和工作路径" class="headerlink" title="新建组、用户和工作路径"></a>新建组、用户和工作路径</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">新建git组</span></span><br><span class="line">groupadd git</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">新建git用户</span></span><br><span class="line">useradd  \</span><br><span class="line">   --system \</span><br><span class="line">   --shell /bin/bash \</span><br><span class="line">   --comment &#x27;Git Version Control&#x27; \</span><br><span class="line">   --gid git \</span><br><span class="line">   --password git \</span><br><span class="line">   --create-home \</span><br><span class="line">   git</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">创建工作路径</span></span><br><span class="line">mkdir -p /var/lib/gitea/&#123;custom,data,log&#125;</span><br><span class="line">chown -R git:git /var/lib/gitea/</span><br><span class="line">chmod -R 750 /var/lib/gitea/</span><br><span class="line">mkdir /etc/gitea</span><br><span class="line">chown root:git /etc/gitea</span><br><span class="line">chmod 770 /etc/gitea</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">为了让 Web 安装程序可以写入配置文件，我们临时为 /etc/gitea 路径授予了组外用户 git 写入权限。建议在安装结束后将配置文件的权限设置为只读。可执行以下命令</span></span><br><span class="line">chmod 750 /etc/gitea</span><br><span class="line">chmod 640 /etc/gitea/app.ini</span><br></pre></td></tr></table></figure>
+<h2 id="检查git"><a href="#检查git" class="headerlink" title="检查git"></a>检查git</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">检查是否安装 Git。要求 Git 版本 &gt;= 2.0</span></span><br><span class="line">git --verion</span><br></pre></td></tr></table></figure>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="下载二进制文件"><a href="#下载二进制文件" class="headerlink" title="下载二进制文件"></a>下载二进制文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -O gitea https://dl.gitea.com/gitea/main/gitea-main-nightly-linux-amd64</span><br><span class="line">chmod +x gitea</span><br></pre></td></tr></table></figure>
+<h2 id="复制文件到指定目录"><a href="#复制文件到指定目录" class="headerlink" title="复制文件到指定目录"></a>复制文件到指定目录</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp gitea /usr/local/bin/gitea</span><br></pre></td></tr></table></figure>
+<p>然后直接执行该二进制文件即可,此处需要使用git用户执行，使用root用户会报错</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GITEA_WORK_DIR=/var/lib/gitea/ /usr/local/bin/gitea web -c /etc/gitea/app.ini</span><br></pre></td></tr></table></figure>
+<p>该启动方式不能后台运行，一般不建议。</p>
+<h2 id="以service方式运行"><a href="#以service方式运行" class="headerlink" title="以service方式运行"></a>以service方式运行</h2><p>新建文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/systemd/system/gitea.service</span><br></pre></td></tr></table></figure>
+<p>将一下内容粘贴到文件中</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Gitea (Git with a cup of tea)</span><br><span class="line">After=syslog.target</span><br><span class="line">After=network.target</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Don<span class="string">&#x27;t forget to add the database service dependencies</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="bash"><span class="comment">#Wants=mysql.service</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">After=mysql.service</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="bash"><span class="comment">#Wants=mariadb.service</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">After=mariadb.service</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="bash">Wants=postgresql.service</span></span><br><span class="line">After=postgresql.service</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="bash"><span class="comment">#Wants=memcached.service</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">After=memcached.service</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="bash"><span class="comment">#Wants=redis.service</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">After=redis.service</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="bash"><span class="comment">###</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> If using socket activation <span class="keyword">for</span> main http/s</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="bash"><span class="comment">#After=gitea.main.socket</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">Requires=gitea.main.socket</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="bash"><span class="comment">###</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> (You can also provide gitea an http fallback and/or ssh socket too)</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="bash"><span class="comment"># An example of /etc/systemd/system/gitea.main.socket</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># [Unit]</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Description=Gitea Web Socket</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># PartOf=gitea.service</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># [Socket]</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Service=gitea.service</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># ListenStream=&lt;some_port&gt;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># NoDelay=true</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># [Install]</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># WantedBy=sockets.target</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line"><span class="meta">#</span><span class="bash"> Uncomment the next line <span class="keyword">if</span> you have repos with lots of files and get a HTTP 500 error because of that</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> LimitNOFILE=524288:524288</span></span><br><span class="line">RestartSec=2s</span><br><span class="line">Type=simple</span><br><span class="line">User=git</span><br><span class="line">Group=git</span><br><span class="line">WorkingDirectory=/var/lib/gitea/</span><br><span class="line"><span class="meta">#</span><span class="bash"> If using Unix socket: tells systemd to create the /run/gitea folder, <span class="built_in">which</span> will contain the gitea.sock file</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> (manually creating /run/gitea doesn<span class="string">&#x27;t work, because it would not persist across reboots)</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">RuntimeDirectory=gitea</span></span><br><span class="line">ExecStart=/usr/local/bin/gitea web --config /etc/gitea/app.ini</span><br><span class="line">Restart=always</span><br><span class="line">Environment=USER=git HOME=/home/git GITEA_WORK_DIR=/var/lib/gitea</span><br><span class="line"><span class="meta">#</span><span class="bash"> If you install Git to directory prefix other than default PATH (<span class="built_in">which</span> happens</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="keyword">for</span> example <span class="keyword">if</span> you install other versions of Git side-to-side with</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> distribution version), uncomment below line and add that prefix to PATH</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Don<span class="string">&#x27;t forget to place git-lfs binary on the PATH below if you want to enable</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Git LFS support</span></span><br><span class="line"><span class="meta">#</span><span class="bash">Environment=PATH=/path/to/git/bin:/bin:/sbin:/usr/bin:/usr/sbin</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> If you want to <span class="built_in">bind</span> Gitea to a port below 1024, uncomment</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> the two values below, or use socket activation to pass Gitea its ports as above</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">CapabilityBoundingSet=CAP_NET_BIND_SERVICE</span></span><br><span class="line"><span class="meta">#</span><span class="bash">AmbientCapabilities=CAP_NET_BIND_SERVICE</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> In some cases, when using CapabilityBoundingSet and AmbientCapabilities option, you may want to</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">set</span> the following value to <span class="literal">false</span> to allow capabilities to be applied on gitea process. The following</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> value <span class="keyword">if</span> <span class="built_in">set</span> to <span class="literal">true</span> sandboxes gitea service and prevent any processes from running with privileges</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="keyword">in</span> the host user namespace.</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">PrivateUsers=<span class="literal">false</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<p>设置权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 gitea.service</span><br></pre></td></tr></table></figure>
+<p>执行命令启动gitea并设置为自启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable gitea</span><br><span class="line">sudo systemctl start gitea</span><br></pre></td></tr></table></figure>
+<p>设置火墙</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=3000/tcp --permanent</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><p>如果上述安装顺利，访问http://服务器ip地址:3000/即可进入gitea初始化页面。</p>
 
     
 
@@ -278,7 +299,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://alexjwell.github.io/idt.github.io/quartzRead/" title="关于quartz组件" target="_blank">https://alexjwell.github.io/idt.github.io/quartzRead/</a>
+          <a href="https://alexjwell.github.io/idt.github.io/gitea安装/" title="gitea安装" target="_blank">https://alexjwell.github.io/idt.github.io/gitea安装/</a>
         </li>
         
         <li>
@@ -300,7 +321,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">关于quartz组件</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">gitea</a>
         		</li>
       		
 		</ul>
@@ -356,7 +377,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://alexjwell.github.io/quartzRead/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://alexjwell.github.io/gitea%E5%AE%89%E8%A3%85/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -371,18 +392,18 @@
 
 <nav id="article-nav">
   
-    <a href="/idt.github.io/hello-vuepress/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/idt.github.io/hexoToGitHub/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          hello-VuePress
+          hexoToGitHub
         
       </div>
     </a>
   
   
-    <a href="/idt.github.io/HelloHexo/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">关于Hexo</div>
+    <a href="/idt.github.io/hello-vuepress/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hello-VuePress</div>
       <i class="icon-circle-right"></i>
     </a>
   

@@ -183,6 +183,131 @@
             
 
   
+    <article id="post-docker安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/idt.github.io/docker%E5%AE%89%E8%A3%85/" target="_blank">docker安装</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/idt.github.io/docker%E5%AE%89%E8%A3%85/" class="archive-article-date">
+        <time datetime="2022-02-21T03:05:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-21</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="一、Anolis-OS-7-9与docker简介"><a href="#一、Anolis-OS-7-9与docker简介" class="headerlink" title="一、Anolis OS 7.9与docker简介"></a>一、Anolis OS 7.9与docker简介</h1><h2 id="1、Anolis-OS-7-9官方首页-龙蜥社区https-openanolis-cn"><a href="#1、Anolis-OS-7-9官方首页-龙蜥社区https-openanolis-cn" class="headerlink" title="1、Anolis OS 7.9官方首页:龙蜥社区https://openanolis.cn/"></a>1、Anolis OS 7.9官方首页:龙蜥社区<a target="_blank" rel="noopener" href="https://openanolis.cn/">https://openanolis.cn/</a></h2><p>龙蜥操作系统(Anolis OS) 7 是龙蜥社区(OpenAnolis)发行的开源Linux发行版，与CentOS 7 100%兼容，<br>支持多计算架构，提供稳定、高性能、安全、可靠的操作系统。<br>龙蜥操作系统(Anolis OS)  7.9是继龙蜥操作系统(Anolis OS)  7系列后发布的第二个版本，<br>支持x86_64和aarch64架构，搭载双内核RHCK（RHEL Compatible Kernel）和 ANCK（OpenAnolis Cloud Kernel），<br>其中ANCK是由社区Cloud Kernel SIG组基于上游4.19 LTS kernel研发，提供对稳定，性能，隔离能力的增强，<br>和飞腾、海光、兆芯、鲲鹏芯片的完善支持。</p>
+<h2 id="2、docker官方首页-https-www-docker-com"><a href="#2、docker官方首页-https-www-docker-com" class="headerlink" title="2、docker官方首页:https://www.docker.com/"></a>2、docker官方首页:<a target="_blank" rel="noopener" href="https://www.docker.com/">https://www.docker.com/</a></h2><p>Docker是一个开源的引擎，可以轻松的为任何应用创建一个轻量级的、可移植的、自给自足的容器。开发者在笔记本上编译测试通过的容器可以批量地在生产环境中部署，包括VMs（虚拟机）、 bare metal、OpenStack 集群和其他的基础应用平台。</p>
+<h1 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h1><h2 id="1、环境"><a href="#1、环境" class="headerlink" title="1、环境"></a>1、环境</h2><p>AnolisOS7.9系统，并且当前操作用户已经切换为root用户。</p>
+<h2 id="2、安装"><a href="#2、安装" class="headerlink" title="2、安装"></a>2、安装</h2><p>执行安装命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install docker</span><br></pre></td></tr></table></figure>
+<p>系统将会自动下载安装docker以及相关依赖，直到控制台提示<code>完毕！</code>，即表示安装成功。</p>
+<p>查看docker版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker version</span><br></pre></td></tr></table></figure>
+<p>结果如下所示，下面提示无法连接守护进程是因为目前docker服务还未启动。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># docker version</span></span><br><span class="line">Client:</span><br><span class="line"> Version:         1.13.1</span><br><span class="line"> API version:     1.26</span><br><span class="line"> Package version: </span><br><span class="line">Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?</span><br></pre></td></tr></table></figure>
+<h2 id="3、启动"><a href="#3、启动" class="headerlink" title="3、启动"></a>3、启动</h2><p>执行启动命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service docker start</span><br></pre></td></tr></table></figure>
+<p>执行完毕后查看docker运行状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service docker status</span><br></pre></td></tr></table></figure>
+<p>结果如下所示,说明docker启动成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># service docker status</span></span><br><span class="line">Redirecting to /bin/systemctl status docker.service</span><br><span class="line">● docker.service - Docker Application Container Engine</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/docker.service; disabled; vendor preset: disabled)</span><br><span class="line">   Active: active (running) since 五 2022-04-28 21:00:08 CST; 2min 55s ago</span><br><span class="line">     Docs: http://docs.docker.com</span><br><span class="line"> Main PID: 6190 (dockerd-current)</span><br><span class="line">    Tasks: 21</span><br><span class="line">   CGroup: /system.slice/docker.service</span><br><span class="line">           ├─6190 /usr/bin/dockerd-current --add-runtime docker-runc=/usr/libexec/docker/docker-runc-current --def...</span><br><span class="line">           └─6198 /usr/bin/docker-containerd-current -l unix:///var/run/docker/libcontainerd/docker-containerd.soc...</span><br></pre></td></tr></table></figure>
+<h2 id="4、设置开机自启动docker"><a href="#4、设置开机自启动docker" class="headerlink" title="4、设置开机自启动docker"></a>4、设置开机自启动docker</h2><p>查看当前docker服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl list-unit-files</span><br></pre></td></tr></table></figure>
+<p>找到docker服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker.service                                disabled</span><br></pre></td></tr></table></figure>
+<p>执行命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure>
+<p>重新查看docker服务，如下状态即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost docker]<span class="comment"># systemctl list-unit-files</span></span><br><span class="line">...</span><br><span class="line">docker.service                                enabled </span><br></pre></td></tr></table></figure>
+<h2 id="5、配置镜像加速"><a href="#5、配置镜像加速" class="headerlink" title="5、配置镜像加速"></a>5、配置镜像加速</h2><p><strong>说明：</strong> 由于国内从 DockerHub 拉取镜像有时会遇到困难，配置镜像加速可以缓解这一情况，但不是必须的，可视实际情况选择。<br>编辑文件daemon.json</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
+<p>加入镜像配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;registry-mirrors&quot;</span>:[<span class="string">&quot;https://docker.mirrors.ustc.edu.cn/&quot;</span>]&#125;</span><br></pre></td></tr></table></figure>
+<p>其中镜像可选</p>
+<ul>
+<li>科大镜像：<a target="_blank" rel="noopener" href="https://docker.mirrors.ustc.edu.cn/">https://docker.mirrors.ustc.edu.cn/</a></li>
+<li>网易：<a target="_blank" rel="noopener" href="https://hub-mirror.c.163.com/">https://hub-mirror.c.163.com/</a></li>
+<li>阿里云(阿里云需要注册)：https://&lt;你的ID&gt;.mirror.aliyuncs.com</li>
+<li>七牛云加速器：<a target="_blank" rel="noopener" href="https://reg-mirror.qiniu.com/">https://reg-mirror.qiniu.com</a></li>
+</ul>
+<p>重启docker服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+<p>查看docker配置是否成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker info</span><br></pre></td></tr></table></figure>
+<p>找到以下配置说明配置完毕</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Registry Mirrors:</span><br><span class="line"> https://docker.mirrors.ustc.edu.cn/</span><br></pre></td></tr></table></figure>
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/idt.github.io/docker%E5%AE%89%E8%A3%85/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-helloMongoDB" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -509,6 +634,117 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/idt.github.io/hexoToGitHub/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-gitea安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/idt.github.io/gitea%E5%AE%89%E8%A3%85/" target="_blank">gitea安装</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/idt.github.io/gitea%E5%AE%89%E8%A3%85/" class="archive-article-date">
+        <time datetime="2022-01-21T02:05:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-21</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="基础环境"><a href="#基础环境" class="headerlink" title="基础环境"></a>基础环境</h1><ul>
+<li>操作系统：Anolis8.8</li>
+<li>数据库：Postgresql</li>
+</ul>
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><h2 id="数据库准备"><a href="#数据库准备" class="headerlink" title="数据库准备"></a>数据库准备</h2><p>postgresql数据库安装，此文略过。</p>
+<p>用户设置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">在数据库服务器上，以超级用户身份登录到数据库控制台：</span></span><br><span class="line">su -c &quot;psql&quot; - postgres</span><br><span class="line"><span class="meta">#</span><span class="bash">创建具有登录权限和密码的数据库用户（在 PostgreSQL 术语中称为角色）。请使用安全的、强密码，而不是下面的 <span class="string">&#x27;gitea&#x27;</span></span></span><br><span class="line">CREATE ROLE gitea WITH LOGIN PASSWORD &#x27;gitea&#x27;;</span><br><span class="line"><span class="meta">#</span><span class="bash">使用 UTF-8 字符集创建数据库，并由之前创建的数据库用户拥有。可以根据预期内容使用任何 libc 排序规则，使用 LC_COLLATE 和 LC_CTYPE 参数指定</span></span><br><span class="line">CREATE DATABASE giteadb WITH OWNER gitea TEMPLATE template0 ENCODING UTF8 LC_COLLATE &#x27;en_US.UTF-8&#x27; LC_CTYPE &#x27;en_US.UTF-8&#x27;;</span><br></pre></td></tr></table></figure>
+<h2 id="新建组、用户和工作路径"><a href="#新建组、用户和工作路径" class="headerlink" title="新建组、用户和工作路径"></a>新建组、用户和工作路径</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">新建git组</span></span><br><span class="line">groupadd git</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">新建git用户</span></span><br><span class="line">useradd  \</span><br><span class="line">   --system \</span><br><span class="line">   --shell /bin/bash \</span><br><span class="line">   --comment &#x27;Git Version Control&#x27; \</span><br><span class="line">   --gid git \</span><br><span class="line">   --password git \</span><br><span class="line">   --create-home \</span><br><span class="line">   git</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">创建工作路径</span></span><br><span class="line">mkdir -p /var/lib/gitea/&#123;custom,data,log&#125;</span><br><span class="line">chown -R git:git /var/lib/gitea/</span><br><span class="line">chmod -R 750 /var/lib/gitea/</span><br><span class="line">mkdir /etc/gitea</span><br><span class="line">chown root:git /etc/gitea</span><br><span class="line">chmod 770 /etc/gitea</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">为了让 Web 安装程序可以写入配置文件，我们临时为 /etc/gitea 路径授予了组外用户 git 写入权限。建议在安装结束后将配置文件的权限设置为只读。可执行以下命令</span></span><br><span class="line">chmod 750 /etc/gitea</span><br><span class="line">chmod 640 /etc/gitea/app.ini</span><br></pre></td></tr></table></figure>
+<h2 id="检查git"><a href="#检查git" class="headerlink" title="检查git"></a>检查git</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">检查是否安装 Git。要求 Git 版本 &gt;= 2.0</span></span><br><span class="line">git --verion</span><br></pre></td></tr></table></figure>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="下载二进制文件"><a href="#下载二进制文件" class="headerlink" title="下载二进制文件"></a>下载二进制文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -O gitea https://dl.gitea.com/gitea/main/gitea-main-nightly-linux-amd64</span><br><span class="line">chmod +x gitea</span><br></pre></td></tr></table></figure>
+<h2 id="复制文件到指定目录"><a href="#复制文件到指定目录" class="headerlink" title="复制文件到指定目录"></a>复制文件到指定目录</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp gitea /usr/local/bin/gitea</span><br></pre></td></tr></table></figure>
+<p>然后直接执行该二进制文件即可,此处需要使用git用户执行，使用root用户会报错</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GITEA_WORK_DIR=/var/lib/gitea/ /usr/local/bin/gitea web -c /etc/gitea/app.ini</span><br></pre></td></tr></table></figure>
+<p>该启动方式不能后台运行，一般不建议。</p>
+<h2 id="以service方式运行"><a href="#以service方式运行" class="headerlink" title="以service方式运行"></a>以service方式运行</h2><p>新建文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/systemd/system/gitea.service</span><br></pre></td></tr></table></figure>
+<p>将一下内容粘贴到文件中</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Gitea (Git with a cup of tea)</span><br><span class="line">After=syslog.target</span><br><span class="line">After=network.target</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Don<span class="string">&#x27;t forget to add the database service dependencies</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="bash"><span class="comment">#Wants=mysql.service</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">After=mysql.service</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="bash"><span class="comment">#Wants=mariadb.service</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">After=mariadb.service</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="bash">Wants=postgresql.service</span></span><br><span class="line">After=postgresql.service</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="bash"><span class="comment">#Wants=memcached.service</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">After=memcached.service</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="bash"><span class="comment">#Wants=redis.service</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">After=redis.service</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="bash"><span class="comment">###</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> If using socket activation <span class="keyword">for</span> main http/s</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="bash"><span class="comment">#After=gitea.main.socket</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">Requires=gitea.main.socket</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="bash"><span class="comment">###</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> (You can also provide gitea an http fallback and/or ssh socket too)</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="bash"><span class="comment"># An example of /etc/systemd/system/gitea.main.socket</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># [Unit]</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Description=Gitea Web Socket</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># PartOf=gitea.service</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># [Socket]</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Service=gitea.service</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># ListenStream=&lt;some_port&gt;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># NoDelay=true</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># [Install]</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># WantedBy=sockets.target</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line"><span class="meta">#</span><span class="bash"> Uncomment the next line <span class="keyword">if</span> you have repos with lots of files and get a HTTP 500 error because of that</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> LimitNOFILE=524288:524288</span></span><br><span class="line">RestartSec=2s</span><br><span class="line">Type=simple</span><br><span class="line">User=git</span><br><span class="line">Group=git</span><br><span class="line">WorkingDirectory=/var/lib/gitea/</span><br><span class="line"><span class="meta">#</span><span class="bash"> If using Unix socket: tells systemd to create the /run/gitea folder, <span class="built_in">which</span> will contain the gitea.sock file</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> (manually creating /run/gitea doesn<span class="string">&#x27;t work, because it would not persist across reboots)</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">RuntimeDirectory=gitea</span></span><br><span class="line">ExecStart=/usr/local/bin/gitea web --config /etc/gitea/app.ini</span><br><span class="line">Restart=always</span><br><span class="line">Environment=USER=git HOME=/home/git GITEA_WORK_DIR=/var/lib/gitea</span><br><span class="line"><span class="meta">#</span><span class="bash"> If you install Git to directory prefix other than default PATH (<span class="built_in">which</span> happens</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="keyword">for</span> example <span class="keyword">if</span> you install other versions of Git side-to-side with</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> distribution version), uncomment below line and add that prefix to PATH</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Don<span class="string">&#x27;t forget to place git-lfs binary on the PATH below if you want to enable</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Git LFS support</span></span><br><span class="line"><span class="meta">#</span><span class="bash">Environment=PATH=/path/to/git/bin:/bin:/sbin:/usr/bin:/usr/sbin</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> If you want to <span class="built_in">bind</span> Gitea to a port below 1024, uncomment</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> the two values below, or use socket activation to pass Gitea its ports as above</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">CapabilityBoundingSet=CAP_NET_BIND_SERVICE</span></span><br><span class="line"><span class="meta">#</span><span class="bash">AmbientCapabilities=CAP_NET_BIND_SERVICE</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> In some cases, when using CapabilityBoundingSet and AmbientCapabilities option, you may want to</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">set</span> the following value to <span class="literal">false</span> to allow capabilities to be applied on gitea process. The following</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> value <span class="keyword">if</span> <span class="built_in">set</span> to <span class="literal">true</span> sandboxes gitea service and prevent any processes from running with privileges</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="keyword">in</span> the host user namespace.</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">PrivateUsers=<span class="literal">false</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##</span></span></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<p>设置权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 gitea.service</span><br></pre></td></tr></table></figure>
+<p>执行命令启动gitea并设置为自启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable gitea</span><br><span class="line">sudo systemctl start gitea</span><br></pre></td></tr></table></figure>
+<p>设置火墙</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=3000/tcp --permanent</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><p>如果上述安装顺利，访问http://服务器ip地址:3000/即可进入gitea初始化页面。</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">gitea</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/idt.github.io/gitea%E5%AE%89%E8%A3%85/">展开全文 >></a>
     </p>
     
 
@@ -927,7 +1163,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2021-2022 <a href="https://alexjwell.github.io/idt.github.io/" target="_blank">Alex</a>
+    		&copy; 2021-2024 <a href="https://alexjwell.github.io/idt.github.io/" target="_blank">Alex</a>
     	</div>
       	<div class="footer-right">
 			
@@ -1038,15 +1274,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">gitea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Hello World</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
+                <a href="javascript:void(0)" class="js-tag color1">关于VuePress</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">hexoToGitHub</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1058,7 +1302,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">关于VuePress</a>
+                <a href="javascript:void(0)" class="js-tag color3">hexoToGitHub</a>
               </li>
             
             <div class="clearfix"></div>
@@ -1186,6 +1430,16 @@
                   <i class="icon-link icon"></i>
                 
                 MSDN
+              </a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://search.maven.org/" target="_blank" 
+                class="search-title" >
+                
+                  <i class="icon-link icon"></i>
+                
+                MavenCentralRespository
               </a>
             </li>
           
