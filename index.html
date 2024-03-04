@@ -183,241 +183,6 @@
             
 
   
-    <article id="post-yum命令汇总" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h3 id="使用YUM查找软件包"><a href="#使用YUM查找软件包" class="headerlink" title="使用YUM查找软件包"></a>使用YUM查找软件包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum search</span><br></pre></td></tr></table></figure>
-<h3 id="列出所有可更新的软件包"><a href="#列出所有可更新的软件包" class="headerlink" title="列出所有可更新的软件包"></a>列出所有可更新的软件包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list updates</span><br></pre></td></tr></table></figure>
-<h3 id="列出所有已安装的软件包"><a href="#列出所有已安装的软件包" class="headerlink" title="列出所有已安装的软件包"></a>列出所有已安装的软件包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list installed</span><br></pre></td></tr></table></figure>
-<h3 id="列出所有已安装但不在-Yum-Repository-内的软件包"><a href="#列出所有已安装但不在-Yum-Repository-内的软件包" class="headerlink" title="列出所有已安装但不在 Yum Repository 内的软件包"></a>列出所有已安装但不在 Yum Repository 内的软件包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list extras</span><br></pre></td></tr></table></figure>
-<h3 id="列出所指定的软件包"><a href="#列出所指定的软件包" class="headerlink" title="列出所指定的软件包"></a>列出所指定的软件包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list</span><br></pre></td></tr></table></figure>
-<h3 id="列出软件包的信息"><a href="#列出软件包的信息" class="headerlink" title="列出软件包的信息"></a>列出软件包的信息</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum info</span><br></pre></td></tr></table></figure>
-<h3 id="列出所有可更新的软件包信息"><a href="#列出所有可更新的软件包信息" class="headerlink" title="列出所有可更新的软件包信息"></a>列出所有可更新的软件包信息</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum info updates</span><br></pre></td></tr></table></figure>
-<h3 id="列出所有已安装的软件包信息"><a href="#列出所有已安装的软件包信息" class="headerlink" title="列出所有已安装的软件包信息"></a>列出所有已安装的软件包信息</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum info installed</span><br></pre></td></tr></table></figure>
-<h3 id="列出软件包提供哪些文件"><a href="#列出软件包提供哪些文件" class="headerlink" title="列出软件包提供哪些文件"></a>列出软件包提供哪些文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum provides</span><br></pre></td></tr></table></figure>
-<h3 id="设置稳定存储库"><a href="#设置稳定存储库" class="headerlink" title="设置稳定存储库"></a>设置稳定存储库</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">查看存储库命令</span></span><br><span class="line">yum-config-manager</span><br><span class="line"><span class="meta">#</span><span class="bash">安装yum-utils包管理工具</span></span><br><span class="line">yum install -y yum-utils</span><br><span class="line"><span class="meta">#</span><span class="bash">设置官方存储库</span></span><br><span class="line">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line"><span class="meta">#</span><span class="bash">或者设置阿里的存储库</span></span><br><span class="line">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line"><span class="meta">#</span><span class="bash">设置每晚更新，该设置可以不设置</span></span><br><span class="line">yum-config-manager --enable docker-ce-nightly</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="安装软件之后的回滚（即卸载软件及该软件的相关依赖）"><a href="#安装软件之后的回滚（即卸载软件及该软件的相关依赖）" class="headerlink" title="安装软件之后的回滚（即卸载软件及该软件的相关依赖）"></a>安装软件之后的回滚（即卸载软件及该软件的相关依赖）</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">查看yum操作历史</span></span><br><span class="line">yum history</span><br><span class="line"><span class="meta">#</span><span class="bash">查看某一个操作</span></span><br><span class="line">yum history info 要查看的ID号</span><br><span class="line"><span class="meta">#</span><span class="bash">回滚</span></span><br><span class="line">yum history undo 要回滚的ID号</span><br></pre></td></tr></table></figure>
-
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/idt.github.io/yum%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-linux常用命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="linux系统常用命令汇总"><a href="#linux系统常用命令汇总" class="headerlink" title="linux系统常用命令汇总"></a>linux系统常用命令汇总</h1><h2 id="系统级操作与命令"><a href="#系统级操作与命令" class="headerlink" title="系统级操作与命令"></a>系统级操作与命令</h2><h3 id="查看系统内核版本"><a href="#查看系统内核版本" class="headerlink" title="查看系统内核版本"></a>查看系统内核版本</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -a</span><br></pre></td></tr></table></figure>
-<h3 id="查看系统版本"><a href="#查看系统版本" class="headerlink" title="查看系统版本"></a>查看系统版本</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure>
-<h3 id="查看CPU占用情况"><a href="#查看CPU占用情况" class="headerlink" title="查看CPU占用情况"></a>查看CPU占用情况</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top</span><br></pre></td></tr></table></figure>
-<h3 id="修改系统编码字符集"><a href="#修改系统编码字符集" class="headerlink" title="修改系统编码字符集"></a>修改系统编码字符集</h3><h4 id="查看默认语言字符集"><a href="#查看默认语言字符集" class="headerlink" title="查看默认语言字符集"></a>查看默认语言字符集</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale</span><br></pre></td></tr></table></figure>
-<h4 id="查看可用语言环境"><a href="#查看可用语言环境" class="headerlink" title="查看可用语言环境"></a>查看可用语言环境</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale -a</span><br></pre></td></tr></table></figure>
-<h4 id="设置临时字符集"><a href="#设置临时字符集" class="headerlink" title="设置临时字符集"></a>设置临时字符集</h4><p>root用户下执行命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export LC_ALL=en_US.UTF-8</span><br></pre></td></tr></table></figure>
-<h4 id="设置永久字符集"><a href="#设置永久字符集" class="headerlink" title="设置永久字符集"></a>设置永久字符集</h4><p>root用户下执行命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/locale.conf</span><br></pre></td></tr></table></figure>
-<p>修改内容，设置LANG=zh_CN.UTF-8<br>然后source /etc/locale.conf</p>
-<h4 id="suse-linux系统"><a href="#suse-linux系统" class="headerlink" title="suse linux系统"></a>suse linux系统</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/language</span><br></pre></td></tr></table></figure>
-<p>修改其中RC_LANG的值，然后执行下面命令进行加载</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/sysconfig/language</span><br></pre></td></tr></table></figure>
-<h3 id="禁用swap分区"><a href="#禁用swap分区" class="headerlink" title="禁用swap分区"></a>禁用swap分区</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapoff -a</span><br></pre></td></tr></table></figure>
-<h3 id="查看与修改本机域名"><a href="#查看与修改本机域名" class="headerlink" title="查看与修改本机域名"></a>查看与修改本机域名</h3><h4 id="查看主机域名"><a href="#查看主机域名" class="headerlink" title="查看主机域名"></a>查看主机域名</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostnamectl</span><br></pre></td></tr></table></figure>
-<h4 id="修改主机域名"><a href="#修改主机域名" class="headerlink" title="修改主机域名"></a>修改主机域名</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostnamectl set-hostname &lt;新域名&gt; 修改本机域名</span><br></pre></td></tr></table></figure>
-<h3 id="查询服务器容量"><a href="#查询服务器容量" class="headerlink" title="查询服务器容量"></a>查询服务器容量</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -lh</span><br></pre></td></tr></table></figure>
-<h3 id="查看本机ip"><a href="#查看本机ip" class="headerlink" title="查看本机ip"></a>查看本机ip</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
-<h3 id="查看java进程"><a href="#查看java进程" class="headerlink" title="查看java进程"></a>查看java进程</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef|grep java</span><br></pre></td></tr></table></figure>
-<h3 id="查看进程执行文件所在目录"><a href="#查看进程执行文件所在目录" class="headerlink" title="查看进程执行文件所在目录"></a>查看进程执行文件所在目录</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ll /proc/&#123;进程号&#125;/cwd查看运行目录</span><br></pre></td></tr></table></figure>
-<h3 id="查看端口被哪个进程占用"><a href="#查看端口被哪个进程占用" class="headerlink" title="查看端口被哪个进程占用"></a>查看端口被哪个进程占用</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:端口号</span><br><span class="line">netstat -tunlp|grep 端口号</span><br></pre></td></tr></table></figure>
-<h3 id="linux设置开机自启动shell"><a href="#linux设置开机自启动shell" class="headerlink" title="linux设置开机自启动shell"></a>linux设置开机自启动shell</h3><p>进入/etc/init.d/<br>新建shell文件test.sh<br>使用<code>chkconfig --list test.sh</code>查看自启动脚本文件<br>通过<code>chkconfig --add test.sh</code>新增自启动脚本文件<br>通过<code>chkconfig --del test.sh</code>删除自启动脚本文件</p>
-<h3 id="查找java安装目录"><a href="#查找java安装目录" class="headerlink" title="查找java安装目录"></a>查找java安装目录</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">echo $JAVA_HOME</span><br><span class="line">rpm -qa | grep java</span><br><span class="line">which java</span><br><span class="line">whereis java</span><br></pre></td></tr></table></figure>
-<h3 id="防火墙设置"><a href="#防火墙设置" class="headerlink" title="防火墙设置"></a>防火墙设置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">启动</span></span><br><span class="line">systemctl start firewalld.service</span><br><span class="line"><span class="meta">#</span><span class="bash">关闭</span></span><br><span class="line">systemctl stop firewalld.service</span><br><span class="line"><span class="meta">#</span><span class="bash">查看状态</span></span><br><span class="line">systemctl status firewalld.service</span><br><span class="line"><span class="meta">#</span><span class="bash">开机禁用</span></span><br><span class="line">systemctl disable firewald.service</span><br><span class="line"><span class="meta">#</span><span class="bash">开机启用</span></span><br><span class="line">systemctl enable firewalld.service</span><br></pre></td></tr></table></figure>
-<h3 id="SELinux设置"><a href="#SELinux设置" class="headerlink" title="SELinux设置"></a>SELinux设置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">临时关闭SELinux</span></span><br><span class="line">setenforce 0</span><br><span class="line"><span class="meta">#</span><span class="bash">开启SELinux</span></span><br><span class="line">setenforce 1</span><br></pre></td></tr></table></figure>
-<p>永久生效</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 操作前先备份</span></span><br><span class="line">cp /etc/selinux/config /etc/selinux/config.bak</span><br><span class="line"><span class="meta">#</span><span class="bash"> 手动编辑配置文件修改SELinux级别</span></span><br><span class="line">vi /etc/selinux/config</span><br><span class="line"><span class="meta">#</span><span class="bash">     SELINUX= can take one of these three values:</span></span><br><span class="line"><span class="meta">#</span><span class="bash">     enforcing - SELinux security policy is enforced.</span></span><br><span class="line"><span class="meta">#</span><span class="bash">     permissive - SELinux prints warnings instead of enforcing.</span></span><br><span class="line"><span class="meta">#</span><span class="bash">     disabled - No SELinux policy is loaded.</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 命令修改SELinux级别从enforcing变为permissive，其中enforcing代表打开，disabled代表关闭</span></span><br><span class="line">sed -i &#x27;s/SELINUX=enforcing/SELINUX=permissive/&#x27; /etc/selinux/config</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看selinux状态：</span></span><br><span class="line">getenforce</span><br><span class="line"><span class="meta">#</span><span class="bash">或者</span></span><br><span class="line">sestatus -v</span><br></pre></td></tr></table></figure>
-<h2 id="权限类操作与命令"><a href="#权限类操作与命令" class="headerlink" title="权限类操作与命令"></a>权限类操作与命令</h2><h3 id="给普通用户添加sudo权限"><a href="#给普通用户添加sudo权限" class="headerlink" title="给普通用户添加sudo权限"></a>给普通用户添加sudo权限</h3><h4 id="1、切换到root用户"><a href="#1、切换到root用户" class="headerlink" title="1、切换到root用户"></a>1、切换到root用户</h4><p>执行</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su</span><br></pre></td></tr></table></figure>
-<p>输入root用户的密码即可切换到root用户</p>
-<h4 id="2、编辑-etc-sudoers文件"><a href="#2、编辑-etc-sudoers文件" class="headerlink" title="2、编辑/etc/sudoers文件"></a>2、编辑/etc/sudoers文件</h4><p>该文件默认是只读的，需要添加写权限，执行以下命令添加权限</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u+w /etc/sudoers</span><br></pre></td></tr></table></figure>
-<h4 id="3、编辑sudoers文件，添加普通用户名单"><a href="#3、编辑sudoers文件，添加普通用户名单" class="headerlink" title="3、编辑sudoers文件，添加普通用户名单"></a>3、编辑sudoers文件，添加普通用户名单</h4><p>执行命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sudoers </span><br></pre></td></tr></table></figure>
-<p>找到这行 root ALL = (ALL)  ALL,在他下面添加xxx ALL=(ALL) ALL (这里的xxx是你的用户名)<br>然后保存退出编辑模式</p>
-<h4 id="4、撤销sudoers文件写权限"><a href="#4、撤销sudoers文件写权限" class="headerlink" title="4、撤销sudoers文件写权限"></a>4、撤销sudoers文件写权限</h4><p>执行命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u-w /etc/sudoers</span><br></pre></td></tr></table></figure>
-<h3 id="将文件权限给普通用户"><a href="#将文件权限给普通用户" class="headerlink" title="将文件权限给普通用户"></a>将文件权限给普通用户</h3><p>执行命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown [-R] ownname:groupname filename</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>ownname</td>
-<td>你的普通用户名称</td>
-</tr>
-<tr>
-<td>groupname</td>
-<td>修改的组</td>
-</tr>
-<tr>
-<td>filename</td>
-<td>你需要赋权给普通用户的文件夹路径</td>
-</tr>
-<tr>
-<td>这样普通用户也就可以操作 这个路径下的文件了。</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="文件级操作"><a href="#文件级操作" class="headerlink" title="文件级操作"></a>文件级操作</h2><h3 id="编辑-新建文件"><a href="#编辑-新建文件" class="headerlink" title="编辑/新建文件"></a>编辑/新建文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi 文件名</span><br></pre></td></tr></table></figure>
-<h3 id="替换文件内容"><a href="#替换文件内容" class="headerlink" title="替换文件内容"></a>替换文件内容</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed [-hnV][-e&lt;script&gt;][-f&lt;script文件&gt;][文本文件]</span><br></pre></td></tr></table></figure>
-<p>常用选项：<br>|参数|说明<br>|—|—<br>|-e|它告诉sed将下一个参数解释为一个sed指令，只有当命令行上给出多个sed指令时使用<br>|-f|后跟保存了sed指令的文件<br>|-i|直接对内容进行修改，不加 i 时默认只是预览，不会对文件进行实际修改<br>|-n|取消默认输出，sed默认会输出所有文本内容，使用 -n 参数后只显示处理过的行<br>|-V|显示版本信息</p>
-<p>编辑命令：<br>|参数|说明<br>|—|—<br>|a|追加，向匹配行后插入内容<br>|c|更改，更改匹配行的内容<br>|i|插入，向匹配行前插入内容<br>|d|删除，删除匹配的内容<br>|s|替换，替换匹配到的内容<br>|p|打印，打印匹配到的内容，通常与 -n 和用<br>|=|用来打印被匹配到的行的行号<br>|n|读取下一行，遇到n时会自动跳入下一行<br>|r,w|读和写，r用于将内容读入文件，w用于将匹配内容写入到文件</p>
-<p>示例：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">sed -i &#x27;1ahello&#x27; 1.txt 　　　　　　--在第一行后面添加 “hello”，并保存修改</span><br><span class="line">sed -i &#x27;/ab/ahello&#x27; 1.txt 　　　　--在内容ab后面添加 “hello”，并保存修改</span><br><span class="line">sed &#x27;$ahello&#x27; 1.txt 　　　　　　--在最后一行添加 “hello”，可直接预览</span><br><span class="line"> </span><br><span class="line">sed -i &#x27;/ab/ihello&#x27; 1.txt 　　　　--在包含“ab”的行之前插入“hello”，如果有多行，则每一行之前都会添加</span><br><span class="line"> </span><br><span class="line">sed -i &#x27;2chello&#x27; 1.txt 　　　　　　--将文件的第二行替换为“hello”</span><br><span class="line">sed -i &#x27;/ab/chello&#x27; 1.txt 　　　　--将包含&quot;ab&quot;的行替换成“hello”</span><br><span class="line"> </span><br><span class="line">sed &#x27;1d&#x27; 1.txt 　　　　　　--删除第一行</span><br><span class="line">sed &#x27;1~2d&#x27; 1.txt 　　　　　　--从第一行开始删除，每隔两行就删除一行，即删除奇数行</span><br><span class="line">sed &#x27;1,2d&#x27; 1.txt 　　　　　　--删除掉1~2行</span><br><span class="line">sed &#x27;1，2!d&#x27; 1.txt 　　　　--删除1~2之外的所有行</span><br><span class="line">sed &#x27;$d&#x27; 1.txt 　　　　　　--删除掉最后一行</span><br><span class="line">sed &#x27;/ab/d&#x27; 1.txt 　　　　　　--删除匹配“ab”的行</span><br><span class="line">sed &#x27;/ab/,$d&#x27; 1.txt 　　　　　　--删除从匹配“ab”的行到最后一行</span><br><span class="line">sed &#x27;/ab/,+1d&#x27; 1.txt 　　　　　　--删除从匹配“ab”的行及后面一行</span><br><span class="line">sed &#x27;/^$/d&#x27; 1.txt 　　　　　　--删除空行</span><br><span class="line">sed &#x27;/ab\|12/!d&#x27; 1.txt 　　　　--删除不匹配12或ab的行，/ab\|12/表示匹配12或ab，！表示取反</span><br><span class="line">sed &#x27;1,3&#123;/ab/d&#125;&#x27; 1.txt 　　　　--删除1~3行中，匹配内容‘ab的行</span><br><span class="line">sed &#x27;s/12/hello&#x27; 1.txt 　　　　--将文中的’12‘替换成’hello‘，默认只替换每行第一个’12‘</span><br><span class="line">sed &#x27;s/12/hello/g&#x27; 1.txt 　　　　--将文中的所有’12‘都替换成’hello‘</span><br><span class="line">sed &#x27;s/12/hello/2&#x27; 1.txt 　　　　--将每行中第二个匹配的’12‘替换成’hello‘</span><br><span class="line">sed -n &#x27;s/12/hello/gpw 2.txt&#x27; 1.txt 　　　　--将每行中所有匹配的’12‘替换成’hello‘，并将替换后的内容写入2.txt</span><br><span class="line">sed &#x27;/#/,.*//g&#x27; 1.txt 　　　　　　--匹配有#号的行，替换匹配行中逗号后的所有内容，(,.*)表示逗号后的所有内容</span><br><span class="line">sed &#x27;s/..$//g&#x27; 1.txt 　　　　　　--替换每行中的最后两个字符为空，每个点代表一个字符</span><br><span class="line">sed &#x27;s/^#.*//&#x27;  1.txt 　　　　　　--将#开头的行替换为空行，即注释的行</span><br><span class="line">sed &#x27;s/^#.*//;/^$/d&#x27;  1.txt  　　　　--先替换1.txt文件中所有注释的空行为空行，然后删除空行，替换和删除操作中间用分号隔开</span><br><span class="line">sed &#x27;s/^[0-9]/(&amp;)/&#x27;   1.txt  　　　　--将每一行中行首的数字加上一个小括号   (^[0-9])表示行首是数字，&amp;符号代表匹配的内容</span><br><span class="line">sed  &#x27;s/$/&amp;&#x27;ha&#x27;/&#x27;  1.txt 　　　　--在1.txt文件的每一行后面加上&quot;ha&quot;字段</span><br><span class="line"> </span><br><span class="line">sed  -n &#x27;1p&#x27;  1.txt 　　　　　　--打印文件中的第一行内容</span><br><span class="line">sed  -n &#x27;2~2p&#x27;  1.txt 　　　　--从第二行开始，每隔两行打印一行，波浪号后面的2表示步长</span><br><span class="line">sed -n &#x27;$p&#x27;  1.txt 　　　　　　--打印文件的最后一行</span><br><span class="line">sed -n &#x27;1,5p&#x27;  1.txt 　　　　　　--打印1到5行</span><br><span class="line">sed  -n &#x27;5,$p&#x27;  1.txt 　　　　　　--打印从第5行到最后一行的内容</span><br><span class="line">sed  -n &#x27;/you/p&#x27;  1.txt  　　　　　　--逐行读取文件，打印匹配you的行</span><br><span class="line">sed  -n &#x27;/ab/,5p&#x27;  1.txt 　　　　　　--逐行读取文件，打印从匹配ab的行到第5行的内容</span><br><span class="line">sed  -n &#x27;1,/ab/p&#x27;  1.txt  　　　　　　--打印第一行到匹配ab的行</span><br><span class="line">sed  -n &#x27;/ab/,/ac/p&#x27;  1.txt 　　　　　　--打印从匹配内容ab到匹配内容ac的行</span><br><span class="line">sed  -n &quot;$=&quot;   1.txt 　　　　　　　　--打印1.txt文件最后一行的行号</span><br><span class="line">ed  -n &#x27;/ab/=&#x27;  1.txt 　　　　　　　　--打印匹配ab的行的行号</span><br><span class="line">sed  -n &#x27;/ab/&#123;=;p&#125;&#x27;   1.txt 　　　　　　　--打印匹配ab的行的行号和内容</span><br><span class="line">sed  &#x27;r 2.txt&#x27;  1.txt 　　　　　　　　　　--将文件2.txt中的内容，读入1.txt中，会在1.txt中的每一行后都读入2.txt的内容</span><br><span class="line">sed &#x27;1r 2.txt&#x27;  1.txt 　　　　　　　　　　--1.txt的第1行之后插入文件2.txt的内容</span><br><span class="line">sed  &#x27;/ab/r   2.txt&#x27;   1.txt 　　　　　　--在匹配ab的行之后插入文件2.txt的内容，如果1.txt中有多行匹配ab则在每一行之后都会插入</span><br><span class="line">sed  &#x27;$r  2.txt&#x27;   1.txt 　　　　　　　　 --在1.txt的最后一行插入2.txt的内容</span><br><span class="line"> </span><br><span class="line">sed  -n  &#x27;w 2.txt&#x27;   1.txt 　　　　　　　　--将1.txt文件的内容写入2.txt文件，如果2.txt文件不存在则创建，如果2.txt存在则覆盖之前的内容</span><br><span class="line">sed   -n &#x27;2w  2.txt&#x27;   1.txt 　　　　　　　　--将文件1.txt中的第2行内容写入到文件2.txt</span><br><span class="line">sed  -n -e &#x27;1w  2.txt&#x27;  -e &#x27;$w 2.txt&#x27;   1.txt 　　　　　　--将1.txt的第1行和最后一行内容写入2.txt</span><br><span class="line">sed  -n -e &#x27;1w  2.txt&#x27;  -e &#x27;$w  3.txt&#x27;  1.txt 　　　　　　　　--将1.txt的第1行和最后一行分别写入2.txt和3.txt</span><br><span class="line">sed  -n  &#x27;/ab\|12/w  2.txt&#x27;    1.txt  　　　　　　　　--将1.txt中匹配ab或12的行的内容，写入到2.txt中</span><br><span class="line">sed  -n &#x27;/ab/,$w 2.txt&#x27;   1.txt  　　　　　　　　　　--将1.txt中从匹配ab的行到最后一行的内容，写入到2.txt中</span><br><span class="line">sed  -n  &#x27;/ab/,+2w  2.txt&#x27;     1.txt  　　　　　　　　--将1.txt中从匹配ab的行及其后2行的内容，写入到2.txt中</span><br></pre></td></tr></table></figure>
-<h3 id="比较文件内容"><a href="#比较文件内容" class="headerlink" title="比较文件内容"></a>比较文件内容</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diff 文件1 文件2</span><br></pre></td></tr></table></figure>
-<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf 文件</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-i</td>
-<td>删除前逐一询问确认。</td>
-</tr>
-<tr>
-<td>-f</td>
-<td>即使原档案属性设为唯读，亦直接删除，无需逐一确认。</td>
-</tr>
-<tr>
-<td>-r</td>
-<td>将目录及以下之档案亦逐一删除。</td>
-</tr>
-</tbody></table>
-<h3 id="查看并修改shell脚本格式"><a href="#查看并修改shell脚本格式" class="headerlink" title="查看并修改shell脚本格式"></a>查看并修改shell脚本格式</h3><p>执行命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim 脚本名</span><br></pre></td></tr></table></figure>
-<p>输入</p>
-<figure class="highlight plain"><figcaption><span>ff``` 可查看脚本格式</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">需要设置的话</span><br><span class="line">&#96;&#96;&#96;:set ff&#x3D;unix&#96;&#96;&#96;</span><br><span class="line">然后输入</span><br><span class="line">&#96;&#96;&#96;wq&#96;&#96;&#96;(保存写入内容并退出；q：只退出，不保存； q!:强制退出)</span><br><span class="line"></span><br><span class="line">需要检查shell脚本格式时执行以下命令</span><br><span class="line">&#96;&#96;&#96;shell</span><br><span class="line">sh -n shell文件</span><br></pre></td></tr></table></figure>
-<h3 id="ssh生成公私钥"><a href="#ssh生成公私钥" class="headerlink" title="ssh生成公私钥"></a>ssh生成公私钥</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
-<p>这样默认生成路径为~/.ssh</p>
-<p>或者</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 1024 -f yourkeyname -C &quot;备注&quot;</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-b</td>
-<td>采用长度1024bit的密钥对,b=bits,最长4096，不过没啥必要</td>
-</tr>
-<tr>
-<td>-t</td>
-<td>rsa    采用rsa加密方式,t=type</td>
-</tr>
-<tr>
-<td>-f</td>
-<td>生成文件名,f=output_keyfiles</td>
-</tr>
-<tr>
-<td>-C</td>
-<td>备注，C=comment</td>
-</tr>
-</tbody></table>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/idt.github.io/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-使用kubeasz快速搭建kubernetes集群" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1297,6 +1062,214 @@
 
 
   
+    <article id="post-linux常用命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/idt.github.io/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" target="_blank">linux命令汇总</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/idt.github.io/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="archive-article-date">
+        <time datetime="2022-01-25T06:51:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-25</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="linux系统常用命令汇总"><a href="#linux系统常用命令汇总" class="headerlink" title="linux系统常用命令汇总"></a>linux系统常用命令汇总</h1><h2 id="系统级操作与命令"><a href="#系统级操作与命令" class="headerlink" title="系统级操作与命令"></a>系统级操作与命令</h2><h3 id="查看系统内核版本"><a href="#查看系统内核版本" class="headerlink" title="查看系统内核版本"></a>查看系统内核版本</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -a</span><br></pre></td></tr></table></figure>
+<h3 id="查看系统版本"><a href="#查看系统版本" class="headerlink" title="查看系统版本"></a>查看系统版本</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure>
+<h3 id="查看CPU占用情况"><a href="#查看CPU占用情况" class="headerlink" title="查看CPU占用情况"></a>查看CPU占用情况</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top</span><br></pre></td></tr></table></figure>
+<h3 id="修改系统编码字符集"><a href="#修改系统编码字符集" class="headerlink" title="修改系统编码字符集"></a>修改系统编码字符集</h3><h4 id="查看默认语言字符集"><a href="#查看默认语言字符集" class="headerlink" title="查看默认语言字符集"></a>查看默认语言字符集</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale</span><br></pre></td></tr></table></figure>
+<h4 id="查看可用语言环境"><a href="#查看可用语言环境" class="headerlink" title="查看可用语言环境"></a>查看可用语言环境</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale -a</span><br></pre></td></tr></table></figure>
+<h4 id="设置临时字符集"><a href="#设置临时字符集" class="headerlink" title="设置临时字符集"></a>设置临时字符集</h4><p>root用户下执行命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export LC_ALL=en_US.UTF-8</span><br></pre></td></tr></table></figure>
+<h4 id="设置永久字符集"><a href="#设置永久字符集" class="headerlink" title="设置永久字符集"></a>设置永久字符集</h4><p>root用户下执行命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/locale.conf</span><br></pre></td></tr></table></figure>
+<p>修改内容，设置LANG=zh_CN.UTF-8<br>然后source /etc/locale.conf</p>
+<h4 id="suse-linux系统"><a href="#suse-linux系统" class="headerlink" title="suse linux系统"></a>suse linux系统</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/language</span><br></pre></td></tr></table></figure>
+<p>修改其中RC_LANG的值，然后执行下面命令进行加载</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/sysconfig/language</span><br></pre></td></tr></table></figure>
+<h3 id="禁用swap分区"><a href="#禁用swap分区" class="headerlink" title="禁用swap分区"></a>禁用swap分区</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapoff -a</span><br></pre></td></tr></table></figure>
+<h3 id="查看与修改本机域名"><a href="#查看与修改本机域名" class="headerlink" title="查看与修改本机域名"></a>查看与修改本机域名</h3><h4 id="查看主机域名"><a href="#查看主机域名" class="headerlink" title="查看主机域名"></a>查看主机域名</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostnamectl</span><br></pre></td></tr></table></figure>
+<h4 id="修改主机域名"><a href="#修改主机域名" class="headerlink" title="修改主机域名"></a>修改主机域名</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostnamectl set-hostname &lt;新域名&gt; 修改本机域名</span><br></pre></td></tr></table></figure>
+<h3 id="查询服务器容量"><a href="#查询服务器容量" class="headerlink" title="查询服务器容量"></a>查询服务器容量</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -lh</span><br></pre></td></tr></table></figure>
+<h3 id="查看本机ip"><a href="#查看本机ip" class="headerlink" title="查看本机ip"></a>查看本机ip</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+<h3 id="查看java进程"><a href="#查看java进程" class="headerlink" title="查看java进程"></a>查看java进程</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef|grep java</span><br></pre></td></tr></table></figure>
+<h3 id="查看进程执行文件所在目录"><a href="#查看进程执行文件所在目录" class="headerlink" title="查看进程执行文件所在目录"></a>查看进程执行文件所在目录</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ll /proc/&#123;进程号&#125;/cwd查看运行目录</span><br></pre></td></tr></table></figure>
+<h3 id="查看端口被哪个进程占用"><a href="#查看端口被哪个进程占用" class="headerlink" title="查看端口被哪个进程占用"></a>查看端口被哪个进程占用</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:端口号</span><br><span class="line">netstat -tunlp|grep 端口号</span><br></pre></td></tr></table></figure>
+<h3 id="linux设置开机自启动shell"><a href="#linux设置开机自启动shell" class="headerlink" title="linux设置开机自启动shell"></a>linux设置开机自启动shell</h3><p>进入/etc/init.d/<br>新建shell文件test.sh<br>使用<code>chkconfig --list test.sh</code>查看自启动脚本文件<br>通过<code>chkconfig --add test.sh</code>新增自启动脚本文件<br>通过<code>chkconfig --del test.sh</code>删除自启动脚本文件</p>
+<h3 id="查找java安装目录"><a href="#查找java安装目录" class="headerlink" title="查找java安装目录"></a>查找java安装目录</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">echo $JAVA_HOME</span><br><span class="line">rpm -qa | grep java</span><br><span class="line">which java</span><br><span class="line">whereis java</span><br></pre></td></tr></table></figure>
+<h3 id="防火墙设置"><a href="#防火墙设置" class="headerlink" title="防火墙设置"></a>防火墙设置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">启动</span></span><br><span class="line">systemctl start firewalld.service</span><br><span class="line"><span class="meta">#</span><span class="bash">关闭</span></span><br><span class="line">systemctl stop firewalld.service</span><br><span class="line"><span class="meta">#</span><span class="bash">查看状态</span></span><br><span class="line">systemctl status firewalld.service</span><br><span class="line"><span class="meta">#</span><span class="bash">开机禁用</span></span><br><span class="line">systemctl disable firewald.service</span><br><span class="line"><span class="meta">#</span><span class="bash">开机启用</span></span><br><span class="line">systemctl enable firewalld.service</span><br></pre></td></tr></table></figure>
+<h3 id="SELinux设置"><a href="#SELinux设置" class="headerlink" title="SELinux设置"></a>SELinux设置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">临时关闭SELinux</span></span><br><span class="line">setenforce 0</span><br><span class="line"><span class="meta">#</span><span class="bash">开启SELinux</span></span><br><span class="line">setenforce 1</span><br></pre></td></tr></table></figure>
+<p>永久生效</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 操作前先备份</span></span><br><span class="line">cp /etc/selinux/config /etc/selinux/config.bak</span><br><span class="line"><span class="meta">#</span><span class="bash"> 手动编辑配置文件修改SELinux级别</span></span><br><span class="line">vi /etc/selinux/config</span><br><span class="line"><span class="meta">#</span><span class="bash">     SELINUX= can take one of these three values:</span></span><br><span class="line"><span class="meta">#</span><span class="bash">     enforcing - SELinux security policy is enforced.</span></span><br><span class="line"><span class="meta">#</span><span class="bash">     permissive - SELinux prints warnings instead of enforcing.</span></span><br><span class="line"><span class="meta">#</span><span class="bash">     disabled - No SELinux policy is loaded.</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 命令修改SELinux级别从enforcing变为permissive，其中enforcing代表打开，disabled代表关闭</span></span><br><span class="line">sed -i &#x27;s/SELINUX=enforcing/SELINUX=permissive/&#x27; /etc/selinux/config</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看selinux状态：</span></span><br><span class="line">getenforce</span><br><span class="line"><span class="meta">#</span><span class="bash">或者</span></span><br><span class="line">sestatus -v</span><br></pre></td></tr></table></figure>
+<h2 id="权限类操作与命令"><a href="#权限类操作与命令" class="headerlink" title="权限类操作与命令"></a>权限类操作与命令</h2><h3 id="给普通用户添加sudo权限"><a href="#给普通用户添加sudo权限" class="headerlink" title="给普通用户添加sudo权限"></a>给普通用户添加sudo权限</h3><h4 id="1、切换到root用户"><a href="#1、切换到root用户" class="headerlink" title="1、切换到root用户"></a>1、切换到root用户</h4><p>执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su</span><br></pre></td></tr></table></figure>
+<p>输入root用户的密码即可切换到root用户</p>
+<h4 id="2、编辑-etc-sudoers文件"><a href="#2、编辑-etc-sudoers文件" class="headerlink" title="2、编辑/etc/sudoers文件"></a>2、编辑/etc/sudoers文件</h4><p>该文件默认是只读的，需要添加写权限，执行以下命令添加权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u+w /etc/sudoers</span><br></pre></td></tr></table></figure>
+<h4 id="3、编辑sudoers文件，添加普通用户名单"><a href="#3、编辑sudoers文件，添加普通用户名单" class="headerlink" title="3、编辑sudoers文件，添加普通用户名单"></a>3、编辑sudoers文件，添加普通用户名单</h4><p>执行命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sudoers </span><br></pre></td></tr></table></figure>
+<p>找到这行 root ALL = (ALL)  ALL,在他下面添加xxx ALL=(ALL) ALL (这里的xxx是你的用户名)<br>然后保存退出编辑模式</p>
+<h4 id="4、撤销sudoers文件写权限"><a href="#4、撤销sudoers文件写权限" class="headerlink" title="4、撤销sudoers文件写权限"></a>4、撤销sudoers文件写权限</h4><p>执行命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u-w /etc/sudoers</span><br></pre></td></tr></table></figure>
+<h3 id="将文件权限给普通用户"><a href="#将文件权限给普通用户" class="headerlink" title="将文件权限给普通用户"></a>将文件权限给普通用户</h3><p>执行命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown [-R] ownname:groupname filename</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ownname</td>
+<td>你的普通用户名称</td>
+</tr>
+<tr>
+<td>groupname</td>
+<td>修改的组</td>
+</tr>
+<tr>
+<td>filename</td>
+<td>你需要赋权给普通用户的文件夹路径</td>
+</tr>
+<tr>
+<td>这样普通用户也就可以操作 这个路径下的文件了。</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="文件级操作"><a href="#文件级操作" class="headerlink" title="文件级操作"></a>文件级操作</h2><h3 id="编辑-新建文件"><a href="#编辑-新建文件" class="headerlink" title="编辑/新建文件"></a>编辑/新建文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi 文件名</span><br></pre></td></tr></table></figure>
+<h3 id="替换文件内容"><a href="#替换文件内容" class="headerlink" title="替换文件内容"></a>替换文件内容</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed [-hnV][-e&lt;script&gt;][-f&lt;script文件&gt;][文本文件]</span><br></pre></td></tr></table></figure>
+<p>常用选项：<br>|参数|说明<br>|—|—<br>|-e|它告诉sed将下一个参数解释为一个sed指令，只有当命令行上给出多个sed指令时使用<br>|-f|后跟保存了sed指令的文件<br>|-i|直接对内容进行修改，不加 i 时默认只是预览，不会对文件进行实际修改<br>|-n|取消默认输出，sed默认会输出所有文本内容，使用 -n 参数后只显示处理过的行<br>|-V|显示版本信息</p>
+<p>编辑命令：<br>|参数|说明<br>|—|—<br>|a|追加，向匹配行后插入内容<br>|c|更改，更改匹配行的内容<br>|i|插入，向匹配行前插入内容<br>|d|删除，删除匹配的内容<br>|s|替换，替换匹配到的内容<br>|p|打印，打印匹配到的内容，通常与 -n 和用<br>|=|用来打印被匹配到的行的行号<br>|n|读取下一行，遇到n时会自动跳入下一行<br>|r,w|读和写，r用于将内容读入文件，w用于将匹配内容写入到文件</p>
+<p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">sed -i &#x27;1ahello&#x27; 1.txt 　　　　　　--在第一行后面添加 “hello”，并保存修改</span><br><span class="line">sed -i &#x27;/ab/ahello&#x27; 1.txt 　　　　--在内容ab后面添加 “hello”，并保存修改</span><br><span class="line">sed &#x27;$ahello&#x27; 1.txt 　　　　　　--在最后一行添加 “hello”，可直接预览</span><br><span class="line"> </span><br><span class="line">sed -i &#x27;/ab/ihello&#x27; 1.txt 　　　　--在包含“ab”的行之前插入“hello”，如果有多行，则每一行之前都会添加</span><br><span class="line"> </span><br><span class="line">sed -i &#x27;2chello&#x27; 1.txt 　　　　　　--将文件的第二行替换为“hello”</span><br><span class="line">sed -i &#x27;/ab/chello&#x27; 1.txt 　　　　--将包含&quot;ab&quot;的行替换成“hello”</span><br><span class="line"> </span><br><span class="line">sed &#x27;1d&#x27; 1.txt 　　　　　　--删除第一行</span><br><span class="line">sed &#x27;1~2d&#x27; 1.txt 　　　　　　--从第一行开始删除，每隔两行就删除一行，即删除奇数行</span><br><span class="line">sed &#x27;1,2d&#x27; 1.txt 　　　　　　--删除掉1~2行</span><br><span class="line">sed &#x27;1，2!d&#x27; 1.txt 　　　　--删除1~2之外的所有行</span><br><span class="line">sed &#x27;$d&#x27; 1.txt 　　　　　　--删除掉最后一行</span><br><span class="line">sed &#x27;/ab/d&#x27; 1.txt 　　　　　　--删除匹配“ab”的行</span><br><span class="line">sed &#x27;/ab/,$d&#x27; 1.txt 　　　　　　--删除从匹配“ab”的行到最后一行</span><br><span class="line">sed &#x27;/ab/,+1d&#x27; 1.txt 　　　　　　--删除从匹配“ab”的行及后面一行</span><br><span class="line">sed &#x27;/^$/d&#x27; 1.txt 　　　　　　--删除空行</span><br><span class="line">sed &#x27;/ab\|12/!d&#x27; 1.txt 　　　　--删除不匹配12或ab的行，/ab\|12/表示匹配12或ab，！表示取反</span><br><span class="line">sed &#x27;1,3&#123;/ab/d&#125;&#x27; 1.txt 　　　　--删除1~3行中，匹配内容‘ab的行</span><br><span class="line">sed &#x27;s/12/hello&#x27; 1.txt 　　　　--将文中的’12‘替换成’hello‘，默认只替换每行第一个’12‘</span><br><span class="line">sed &#x27;s/12/hello/g&#x27; 1.txt 　　　　--将文中的所有’12‘都替换成’hello‘</span><br><span class="line">sed &#x27;s/12/hello/2&#x27; 1.txt 　　　　--将每行中第二个匹配的’12‘替换成’hello‘</span><br><span class="line">sed -n &#x27;s/12/hello/gpw 2.txt&#x27; 1.txt 　　　　--将每行中所有匹配的’12‘替换成’hello‘，并将替换后的内容写入2.txt</span><br><span class="line">sed &#x27;/#/,.*//g&#x27; 1.txt 　　　　　　--匹配有#号的行，替换匹配行中逗号后的所有内容，(,.*)表示逗号后的所有内容</span><br><span class="line">sed &#x27;s/..$//g&#x27; 1.txt 　　　　　　--替换每行中的最后两个字符为空，每个点代表一个字符</span><br><span class="line">sed &#x27;s/^#.*//&#x27;  1.txt 　　　　　　--将#开头的行替换为空行，即注释的行</span><br><span class="line">sed &#x27;s/^#.*//;/^$/d&#x27;  1.txt  　　　　--先替换1.txt文件中所有注释的空行为空行，然后删除空行，替换和删除操作中间用分号隔开</span><br><span class="line">sed &#x27;s/^[0-9]/(&amp;)/&#x27;   1.txt  　　　　--将每一行中行首的数字加上一个小括号   (^[0-9])表示行首是数字，&amp;符号代表匹配的内容</span><br><span class="line">sed  &#x27;s/$/&amp;&#x27;ha&#x27;/&#x27;  1.txt 　　　　--在1.txt文件的每一行后面加上&quot;ha&quot;字段</span><br><span class="line"> </span><br><span class="line">sed  -n &#x27;1p&#x27;  1.txt 　　　　　　--打印文件中的第一行内容</span><br><span class="line">sed  -n &#x27;2~2p&#x27;  1.txt 　　　　--从第二行开始，每隔两行打印一行，波浪号后面的2表示步长</span><br><span class="line">sed -n &#x27;$p&#x27;  1.txt 　　　　　　--打印文件的最后一行</span><br><span class="line">sed -n &#x27;1,5p&#x27;  1.txt 　　　　　　--打印1到5行</span><br><span class="line">sed  -n &#x27;5,$p&#x27;  1.txt 　　　　　　--打印从第5行到最后一行的内容</span><br><span class="line">sed  -n &#x27;/you/p&#x27;  1.txt  　　　　　　--逐行读取文件，打印匹配you的行</span><br><span class="line">sed  -n &#x27;/ab/,5p&#x27;  1.txt 　　　　　　--逐行读取文件，打印从匹配ab的行到第5行的内容</span><br><span class="line">sed  -n &#x27;1,/ab/p&#x27;  1.txt  　　　　　　--打印第一行到匹配ab的行</span><br><span class="line">sed  -n &#x27;/ab/,/ac/p&#x27;  1.txt 　　　　　　--打印从匹配内容ab到匹配内容ac的行</span><br><span class="line">sed  -n &quot;$=&quot;   1.txt 　　　　　　　　--打印1.txt文件最后一行的行号</span><br><span class="line">ed  -n &#x27;/ab/=&#x27;  1.txt 　　　　　　　　--打印匹配ab的行的行号</span><br><span class="line">sed  -n &#x27;/ab/&#123;=;p&#125;&#x27;   1.txt 　　　　　　　--打印匹配ab的行的行号和内容</span><br><span class="line">sed  &#x27;r 2.txt&#x27;  1.txt 　　　　　　　　　　--将文件2.txt中的内容，读入1.txt中，会在1.txt中的每一行后都读入2.txt的内容</span><br><span class="line">sed &#x27;1r 2.txt&#x27;  1.txt 　　　　　　　　　　--1.txt的第1行之后插入文件2.txt的内容</span><br><span class="line">sed  &#x27;/ab/r   2.txt&#x27;   1.txt 　　　　　　--在匹配ab的行之后插入文件2.txt的内容，如果1.txt中有多行匹配ab则在每一行之后都会插入</span><br><span class="line">sed  &#x27;$r  2.txt&#x27;   1.txt 　　　　　　　　 --在1.txt的最后一行插入2.txt的内容</span><br><span class="line"> </span><br><span class="line">sed  -n  &#x27;w 2.txt&#x27;   1.txt 　　　　　　　　--将1.txt文件的内容写入2.txt文件，如果2.txt文件不存在则创建，如果2.txt存在则覆盖之前的内容</span><br><span class="line">sed   -n &#x27;2w  2.txt&#x27;   1.txt 　　　　　　　　--将文件1.txt中的第2行内容写入到文件2.txt</span><br><span class="line">sed  -n -e &#x27;1w  2.txt&#x27;  -e &#x27;$w 2.txt&#x27;   1.txt 　　　　　　--将1.txt的第1行和最后一行内容写入2.txt</span><br><span class="line">sed  -n -e &#x27;1w  2.txt&#x27;  -e &#x27;$w  3.txt&#x27;  1.txt 　　　　　　　　--将1.txt的第1行和最后一行分别写入2.txt和3.txt</span><br><span class="line">sed  -n  &#x27;/ab\|12/w  2.txt&#x27;    1.txt  　　　　　　　　--将1.txt中匹配ab或12的行的内容，写入到2.txt中</span><br><span class="line">sed  -n &#x27;/ab/,$w 2.txt&#x27;   1.txt  　　　　　　　　　　--将1.txt中从匹配ab的行到最后一行的内容，写入到2.txt中</span><br><span class="line">sed  -n  &#x27;/ab/,+2w  2.txt&#x27;     1.txt  　　　　　　　　--将1.txt中从匹配ab的行及其后2行的内容，写入到2.txt中</span><br></pre></td></tr></table></figure>
+<h3 id="比较文件内容"><a href="#比较文件内容" class="headerlink" title="比较文件内容"></a>比较文件内容</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diff 文件1 文件2</span><br></pre></td></tr></table></figure>
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf 文件</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-i</td>
+<td>删除前逐一询问确认。</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>即使原档案属性设为唯读，亦直接删除，无需逐一确认。</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>将目录及以下之档案亦逐一删除。</td>
+</tr>
+</tbody></table>
+<h3 id="查看并修改shell脚本格式"><a href="#查看并修改shell脚本格式" class="headerlink" title="查看并修改shell脚本格式"></a>查看并修改shell脚本格式</h3><p>执行命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim 脚本名</span><br></pre></td></tr></table></figure>
+<p>输入</p>
+<figure class="highlight plain"><figcaption><span>ff``` 可查看脚本格式</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">需要设置的话</span><br><span class="line">&#96;&#96;&#96;:set ff&#x3D;unix&#96;&#96;&#96;</span><br><span class="line">然后输入</span><br><span class="line">&#96;&#96;&#96;wq&#96;&#96;&#96;(保存写入内容并退出；q：只退出，不保存； q!:强制退出)</span><br><span class="line"></span><br><span class="line">需要检查shell脚本格式时执行以下命令</span><br><span class="line">&#96;&#96;&#96;shell</span><br><span class="line">sh -n shell文件</span><br></pre></td></tr></table></figure>
+<h3 id="ssh生成公私钥"><a href="#ssh生成公私钥" class="headerlink" title="ssh生成公私钥"></a>ssh生成公私钥</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
+<p>这样默认生成路径为~/.ssh</p>
+<p>或者</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 1024 -f yourkeyname -C &quot;备注&quot;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-b</td>
+<td>采用长度1024bit的密钥对,b=bits,最长4096，不过没啥必要</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>rsa    采用rsa加密方式,t=type</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>生成文件名,f=output_keyfiles</td>
+</tr>
+<tr>
+<td>-C</td>
+<td>备注，C=comment</td>
+</tr>
+</tbody></table>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">shell、linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/idt.github.io/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-postgresql安装与使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1381,6 +1354,103 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/idt.github.io/postgresql%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-yum命令汇总" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/idt.github.io/yum%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/" target="_blank">yum命令汇总</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/idt.github.io/yum%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/" class="archive-article-date">
+        <time datetime="2022-01-25T06:51:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-25</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="使用YUM查找软件包"><a href="#使用YUM查找软件包" class="headerlink" title="使用YUM查找软件包"></a>使用YUM查找软件包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum search</span><br></pre></td></tr></table></figure>
+<h3 id="列出所有可更新的软件包"><a href="#列出所有可更新的软件包" class="headerlink" title="列出所有可更新的软件包"></a>列出所有可更新的软件包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list updates</span><br></pre></td></tr></table></figure>
+<h3 id="列出所有已安装的软件包"><a href="#列出所有已安装的软件包" class="headerlink" title="列出所有已安装的软件包"></a>列出所有已安装的软件包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list installed</span><br></pre></td></tr></table></figure>
+<h3 id="列出所有已安装但不在-Yum-Repository-内的软件包"><a href="#列出所有已安装但不在-Yum-Repository-内的软件包" class="headerlink" title="列出所有已安装但不在 Yum Repository 内的软件包"></a>列出所有已安装但不在 Yum Repository 内的软件包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list extras</span><br></pre></td></tr></table></figure>
+<h3 id="列出所指定的软件包"><a href="#列出所指定的软件包" class="headerlink" title="列出所指定的软件包"></a>列出所指定的软件包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list</span><br></pre></td></tr></table></figure>
+<h3 id="列出软件包的信息"><a href="#列出软件包的信息" class="headerlink" title="列出软件包的信息"></a>列出软件包的信息</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum info</span><br></pre></td></tr></table></figure>
+<h3 id="列出所有可更新的软件包信息"><a href="#列出所有可更新的软件包信息" class="headerlink" title="列出所有可更新的软件包信息"></a>列出所有可更新的软件包信息</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum info updates</span><br></pre></td></tr></table></figure>
+<h3 id="列出所有已安装的软件包信息"><a href="#列出所有已安装的软件包信息" class="headerlink" title="列出所有已安装的软件包信息"></a>列出所有已安装的软件包信息</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum info installed</span><br></pre></td></tr></table></figure>
+<h3 id="列出软件包提供哪些文件"><a href="#列出软件包提供哪些文件" class="headerlink" title="列出软件包提供哪些文件"></a>列出软件包提供哪些文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum provides</span><br></pre></td></tr></table></figure>
+<h3 id="设置稳定存储库"><a href="#设置稳定存储库" class="headerlink" title="设置稳定存储库"></a>设置稳定存储库</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">查看存储库命令</span></span><br><span class="line">yum-config-manager</span><br><span class="line"><span class="meta">#</span><span class="bash">安装yum-utils包管理工具</span></span><br><span class="line">yum install -y yum-utils</span><br><span class="line"><span class="meta">#</span><span class="bash">设置官方存储库</span></span><br><span class="line">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line"><span class="meta">#</span><span class="bash">或者设置阿里的存储库</span></span><br><span class="line">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line"><span class="meta">#</span><span class="bash">设置每晚更新，该设置可以不设置</span></span><br><span class="line">yum-config-manager --enable docker-ce-nightly</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="安装软件之后的回滚（即卸载软件及该软件的相关依赖）"><a href="#安装软件之后的回滚（即卸载软件及该软件的相关依赖）" class="headerlink" title="安装软件之后的回滚（即卸载软件及该软件的相关依赖）"></a>安装软件之后的回滚（即卸载软件及该软件的相关依赖）</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">查看yum操作历史</span></span><br><span class="line">yum history</span><br><span class="line"><span class="meta">#</span><span class="bash">查看某一个操作</span></span><br><span class="line">yum history info 要查看的ID号</span><br><span class="line"><span class="meta">#</span><span class="bash">回滚</span></span><br><span class="line">yum history undo 要回滚的ID号</span><br></pre></td></tr></table></figure>
+
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell、linux、yum</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/idt.github.io/yum%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/">展开全文 >></a>
     </p>
     
 
@@ -1652,15 +1722,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">hexoToGitHub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">关于VuePress</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1668,11 +1730,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">gitea</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">hexoToGitHub</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">gitea</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1681,6 +1751,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">shell、linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1693,6 +1767,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">常用vuepress工具集说明</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">shell、linux、yum</a>
               </li>
              
               <li class="article-tag-list-item">
