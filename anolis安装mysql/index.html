@@ -18,7 +18,7 @@
 <meta property="og:description" content="Anolis系统安装mysql一、使用DNF安装MYSQL-SERVERdnf install mysql-server 二、启动数据库12systemctl start mysqld #启动MYSQL 服务systemctl enable mysqld #将MYSQL 服务设置为开机启动 查看MYSQL 服务状态：(active 表面服务已正常启动) 1systemctl status mysq">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-03-11T04:51:28.000Z">
-<meta property="article:modified_time" content="2024-03-11T03:52:13.528Z">
+<meta property="article:modified_time" content="2024-03-11T07:26:26.948Z">
 <meta property="article:author" content="Alex">
 <meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
@@ -207,7 +207,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">224字</span>
+      <span class="post-count">743字</span>
     </span>
   </span>
 
@@ -216,7 +216,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">3分</span>
     </span>
   </span>
 </div>
@@ -237,6 +237,50 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alter user &#x27;root&#x27;@&#x27;%&#x27; identified by &#x27;123456&#x27;;</span><br><span class="line">grant all privileges on *.* to &#x27;root&#x27;@&#x27;%&#x27;;</span><br></pre></td></tr></table></figure>
 <h1 id="四、开通并重启火墙"><a href="#四、开通并重启火墙" class="headerlink" title="四、开通并重启火墙"></a>四、开通并重启火墙</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=3306/tcp --permanent</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
 <h1 id="五、登录"><a href="#五、登录" class="headerlink" title="五、登录"></a>五、登录</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p #使用密码登录系统</span><br></pre></td></tr></table></figure>
+<h1 id="六、额外设置"><a href="#六、额外设置" class="headerlink" title="六、额外设置"></a>六、额外设置</h1><h2 id="1、binlog设置"><a href="#1、binlog设置" class="headerlink" title="1、binlog设置"></a>1、binlog设置</h2><p>常见的binlog相关命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">查看日志开启状态</span> </span><br><span class="line">show variables like &#x27;log%&#x27;;</span><br><span class="line"><span class="meta">#</span><span class="bash">查看binlog模式</span></span><br><span class="line">show global variables like &quot;binlog%&quot;;</span><br><span class="line"><span class="meta">#</span><span class="bash">查看所有binlog日志列表</span></span><br><span class="line">show master logs;</span><br><span class="line"><span class="meta">#</span><span class="bash">查看最新一个binlog日志的编号名称，及其最后一个操作事件结束点</span> </span><br><span class="line">show master status;</span><br><span class="line"><span class="meta">#</span><span class="bash">刷新<span class="built_in">log</span>日志，立刻产生一个新编号的binlog日志文件，跟重启一个效果</span> </span><br><span class="line">flush logs;</span><br><span class="line"><span class="meta">#</span><span class="bash">清空所有binlog日志</span> </span><br><span class="line">reset master;</span><br></pre></td></tr></table></figure>
+<p>登录状态下查看binlog日志</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show binlog events [IN &#x27;log_name&#x27;] [FROM pos] [LIMIT [offset,] row_count];</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IN ‘log_name’</td>
+<td>指定要查询的binlog文件名(不指定就是第一个binlog文件)</td>
+</tr>
+<tr>
+<td>FROM pos</td>
+<td>指定从哪个pos起始点开始查起(不指定就是从整个文件首个pos点开始算)</td>
+</tr>
+<tr>
+<td>LIMIT [offset,]</td>
+<td>偏移量(不指定就是0)</td>
+</tr>
+<tr>
+<td>row_count</td>
+<td>查询总条数(不指定就是所有行)</td>
+</tr>
+<tr>
+<td>示例：</td>
+<td></td>
+</tr>
+</tbody></table>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">查询第一个(最早)的binlog日志</span></span><br><span class="line">show binlog events\G;</span><br><span class="line"><span class="meta">#</span><span class="bash">指定查询 mysql-bin.000001 这个文件</span></span><br><span class="line">show binlog events in &#x27;mysql-bin.000001&#x27;\G;</span><br><span class="line"><span class="meta">#</span><span class="bash">指定查询 mysql-bin.000001 这个文件,从pos点:8224开始查起</span></span><br><span class="line">show binlog events in &#x27;mysql-bin.000001&#x27; from 8224\G;</span><br><span class="line"><span class="meta">#</span><span class="bash">指定查询 mysql-bin.000001 这个文件,从pos点:8224开始查起,查询10条</span></span><br><span class="line">show binlog events in &#x27;mysql-bin.000001&#x27; from 8224 limit 10\G;</span><br><span class="line"><span class="meta">#</span><span class="bash">指定查询 mysql-bin.000001 这个文件,从pos点:8224开始查起,偏移2行，查询10条</span></span><br><span class="line">show binlog events in &#x27;mysql-bin.000001&#x27; from 8224 limit 2,10\G;</span><br></pre></td></tr></table></figure>
+
+<p>未登陆状态下查看binlog文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqlbinlog binlog.000001</span><br></pre></td></tr></table></figure>
+<p>设置binlog删除策略</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> binlog日志7天后过期删除，该配置不会删除7天以前的历史binlog，所以还需要手动将更久之前的文件删除</span></span><br><span class="line">set global expire_logs_days=7;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除7天以前的binlog文件</span></span><br><span class="line">PURGE MASTER LOGS BEFORE DATE_SUB(CURRENT_DATE, INTERVAL 7 DAY);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>注意：测试发现8.0.36版本的mysql执行以上binlog策略命令会报异常<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR 3683 (HY000): The option expire_logs_days and binlog_expire_logs_seconds cannot be used together. Please use binlog_expire_logs_seconds to set the expire time (expire_logs_days is deprecated)</span><br></pre></td></tr></table></figure>
+因此，需要按照提示改为设置<code>binlog_expire_logs_seconds</code>参数<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set global binlog_expire_logs_seconds=604800;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
     
 
     
@@ -555,11 +599,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dashboard</a>
+                <a href="javascript:void(0)" class="js-tag color1">gitea</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">gitea</a>
+                <a href="javascript:void(0)" class="js-tag color5">dashboard</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,11 +619,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">关于quartz组件</a>
+                <a href="javascript:void(0)" class="js-tag color1">常用vuepress工具集说明</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">常用vuepress工具集说明</a>
+                <a href="javascript:void(0)" class="js-tag color1">关于quartz组件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -587,11 +631,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">gauss</a>
+                <a href="javascript:void(0)" class="js-tag color1">Kubernetes</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color1">gauss</a>
               </li>
             
             <div class="clearfix"></div>
