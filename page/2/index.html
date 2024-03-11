@@ -183,6 +183,123 @@
             
 
   
+    <article id="post-高斯数据库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/idt.github.io/%E9%AB%98%E6%96%AF%E6%95%B0%E6%8D%AE%E5%BA%93/" target="_blank">高斯数据库安装</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/idt.github.io/%E9%AB%98%E6%96%AF%E6%95%B0%E6%8D%AE%E5%BA%93/" class="archive-article-date">
+        <time datetime="2022-01-25T06:51:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-25</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>#高斯数据库</p>
+<h2 id="一、官方网站"><a href="#一、官方网站" class="headerlink" title="一、官方网站"></a>一、官方网站</h2><p><a target="_blank" rel="noopener" href="https://www.opengauss.org/zh/">https://www.opengauss.org/zh/</a></p>
+<h2 id="二、安装高斯数据库（单节点模式）"><a href="#二、安装高斯数据库（单节点模式）" class="headerlink" title="二、安装高斯数据库（单节点模式）"></a>二、安装高斯数据库（单节点模式）</h2><ul>
+<li>操作系统环境：OpenEuler22.03</li>
+</ul>
+<p>可参照官方介绍<a target="_blank" rel="noopener" href="https://docs.opengauss.org/zh/docs/3.1.1/docs/BriefTutorial/%E5%AE%89%E8%A3%85%E4%B8%8E%E7%99%BB%E5%BD%95.html">https://docs.opengauss.org/zh/docs/3.1.1/docs/BriefTutorial/%E5%AE%89%E8%A3%85%E4%B8%8E%E7%99%BB%E5%BD%95.html</a></p>
+<h3 id="1、使用root用户初始化部分环境"><a href="#1、使用root用户初始化部分环境" class="headerlink" title="1、使用root用户初始化部分环境"></a>1、使用root用户初始化部分环境</h3><h4 id="1）新建用户组和用户"><a href="#1）新建用户组和用户" class="headerlink" title="1）新建用户组和用户"></a>1）新建用户组和用户</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">groupadd dbgroup</span><br><span class="line">useradd -g dbgroup omm</span><br><span class="line">passwd omm</span><br></pre></td></tr></table></figure>
+<h4 id="2）设置-opt目录权限"><a href="#2）设置-opt目录权限" class="headerlink" title="2）设置/opt目录权限"></a>2）设置/opt目录权限</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 /opt</span><br></pre></td></tr></table></figure>
+<h4 id="3）在-opt目录下新建文件夹software并赋权"><a href="#3）在-opt目录下新建文件夹software并赋权" class="headerlink" title="3）在/opt目录下新建文件夹software并赋权"></a>3）在/opt目录下新建文件夹software并赋权</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir software</span><br><span class="line">chmod 777 /software</span><br></pre></td></tr></table></figure>
+<h3 id="2、切换到omm用户之后进行安装"><a href="#2、切换到omm用户之后进行安装" class="headerlink" title="2、切换到omm用户之后进行安装"></a>2、切换到omm用户之后进行安装</h3><h4 id="1）在-opt-software目录下新建文件夹"><a href="#1）在-opt-software目录下新建文件夹" class="headerlink" title="1）在/opt/software目录下新建文件夹"></a>1）在/opt/software目录下新建文件夹</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir openGauss</span><br></pre></td></tr></table></figure>
+<h4 id="2）将高斯数据库下载下来openGauss-3-1-1-openEuler-64bit-tar-bz2并上传到系统"><a href="#2）将高斯数据库下载下来openGauss-3-1-1-openEuler-64bit-tar-bz2并上传到系统" class="headerlink" title="2）将高斯数据库下载下来openGauss-3.1.1-openEuler-64bit.tar.bz2并上传到系统"></a>2）将高斯数据库下载下来openGauss-3.1.1-openEuler-64bit.tar.bz2并上传到系统</h4><h4 id="3）执行解压命令"><a href="#3）执行解压命令" class="headerlink" title="3）执行解压命令"></a>3）执行解压命令</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -jxf openGauss-3.1.1-openEuler-64bit.tar.bz2 -C /opt/software/openGauss</span><br></pre></td></tr></table></figure>
+<h4 id="4）进入目录"><a href="#4）进入目录" class="headerlink" title="4）进入目录"></a>4）进入目录</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/software/openGauss/simpleInstall</span><br></pre></td></tr></table></figure>
+<h4 id="5）执行命令初始化数据库，其中-w后面的为数据库初始化密码"><a href="#5）执行命令初始化数据库，其中-w后面的为数据库初始化密码" class="headerlink" title="5）执行命令初始化数据库，其中-w后面的为数据库初始化密码"></a>5）执行命令初始化数据库，其中-w后面的为数据库初始化密码</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh install.sh  -w 123 </span><br></pre></td></tr></table></figure>
+<ul>
+<li>执行过程中可能会遇到如下问题<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gsql: error while loading shared libraries: libreadline.so.7: cannot open shared object file: No such file or directory</span><br><span class="line">gsql: error while loading shared libraries: libreadline.so.7: cannot open shared object file: No such file or directory</span><br></pre></td></tr></table></figure></li>
+<li>解决方案如下：</li>
+</ul>
+<p>切换回root用户进入目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/lib64</span><br></pre></td></tr></table></figure>
+<p>在该目录中查找libreadline.so文件，发现libreadline.so.8的版本，执行以下命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s libreadline.so.8   libreadline.so.7</span><br></pre></td></tr></table></figure>
+<p>然后切换omm用户重新初始化数据库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh install.sh  -w 123 </span><br></pre></td></tr></table></figure>
+<h4 id="6）查看数据库进程"><a href="#6）查看数据库进程" class="headerlink" title="6）查看数据库进程"></a>6）查看数据库进程</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps ux | grep gaussdb</span><br></pre></td></tr></table></figure>
+<p>显示如下即表示数据库安装成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[omm@localhost simpleInstall]$ ps ux|grep gaussdb</span><br><span class="line">omm        21712 13.3 21.9 5827576 758504 ?      Ssl  16:45   0:04 /opt/software/openGauss/bin/gaussdb -D /opt/software/openGauss/data/single_node</span><br></pre></td></tr></table></figure>
+<p>同时也可执行以下命令查看数据库信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gs_ctl query -D /opt/software/openGauss/data/single_node</span><br></pre></td></tr></table></figure>
+<p>显示信息如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">gs_ctl query ,datadir is /opt/software/openGauss/data/single_node </span><br><span class="line"> HA state:           </span><br><span class="line">        local_role                     : Normal</span><br><span class="line">        static_connections             : 0</span><br><span class="line">        db_state                       : Normal</span><br><span class="line">        detail_information             : Normal</span><br><span class="line"></span><br><span class="line"> Senders info:       </span><br><span class="line">No information </span><br><span class="line"> Receiver info:      </span><br><span class="line">No information </span><br></pre></td></tr></table></figure>
+
+
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">gauss</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/idt.github.io/%E9%AB%98%E6%96%AF%E6%95%B0%E6%8D%AE%E5%BA%93/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Kubernetes安装与卸载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1264,7 +1381,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">关于VuePress</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Hello World</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1276,19 +1401,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Hello World</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">gitea</a>
+                <a href="javascript:void(0)" class="js-tag color5">dashboard</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dashboard</a>
+                <a href="javascript:void(0)" class="js-tag color1">gitea</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1312,15 +1433,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">yum</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kubernetes</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell、linux、yum</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">gauss</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Kubernetes</a>
               </li>
             
             <div class="clearfix"></div>
