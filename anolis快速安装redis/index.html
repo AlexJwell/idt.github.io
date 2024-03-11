@@ -10,15 +10,15 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="Anolis系统安装redis一、更新yum1yum makecache 二、执行安装命令1yum install redis 三、修改配置文件1vim &#x2F;etc&#x2F;redis.conf 修改bind配置 1bind 0.0.0.0 修改密码配置 1requirepass 密码 测试密码 123redis-cliinfoauth 密码 四、设置自启动12systemctl start redissy">
+  <meta name="description" content="Anolis系统快速安装redis一、更新yum1yum makecache 二、执行安装命令1yum install redis 三、修改配置文件1vim &#x2F;etc&#x2F;redis.conf 修改bind配置 1bind 0.0.0.0 修改密码配置 1requirepass 密码 测试密码 123redis-cliinfoauth 密码 四、设置自启动12systemctl start redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Anolis系统快速安装redis">
 <meta property="og:url" content="https://alexjwell.github.io/anolis%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85redis/index.html">
 <meta property="og:site_name" content="Alex的个人博客">
-<meta property="og:description" content="Anolis系统安装redis一、更新yum1yum makecache 二、执行安装命令1yum install redis 三、修改配置文件1vim &#x2F;etc&#x2F;redis.conf 修改bind配置 1bind 0.0.0.0 修改密码配置 1requirepass 密码 测试密码 123redis-cliinfoauth 密码 四、设置自启动12systemctl start redissy">
+<meta property="og:description" content="Anolis系统快速安装redis一、更新yum1yum makecache 二、执行安装命令1yum install redis 三、修改配置文件1vim &#x2F;etc&#x2F;redis.conf 修改bind配置 1bind 0.0.0.0 修改密码配置 1requirepass 密码 测试密码 123redis-cliinfoauth 密码 四、设置自启动12systemctl start redis">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-03-11T04:51:28.000Z">
-<meta property="article:modified_time" content="2024-03-11T08:26:35.590Z">
+<meta property="article:modified_time" content="2024-03-11T08:49:48.101Z">
 <meta property="article:author" content="Alex">
 <meta property="article:tag" content="redis">
 <meta name="twitter:card" content="summary">
@@ -207,7 +207,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">88字</span>
+      <span class="post-count">90字</span>
     </span>
   </span>
 
@@ -227,7 +227,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h1 id="Anolis系统安装redis"><a href="#Anolis系统安装redis" class="headerlink" title="Anolis系统安装redis"></a>Anolis系统安装redis</h1><h2 id="一、更新yum"><a href="#一、更新yum" class="headerlink" title="一、更新yum"></a>一、更新yum</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
+    <h1 id="Anolis系统快速安装redis"><a href="#Anolis系统快速安装redis" class="headerlink" title="Anolis系统快速安装redis"></a>Anolis系统快速安装redis</h1><h2 id="一、更新yum"><a href="#一、更新yum" class="headerlink" title="一、更新yum"></a>一、更新yum</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
 <h2 id="二、执行安装命令"><a href="#二、执行安装命令" class="headerlink" title="二、执行安装命令"></a>二、执行安装命令</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install redis</span><br></pre></td></tr></table></figure>
 <h2 id="三、修改配置文件"><a href="#三、修改配置文件" class="headerlink" title="三、修改配置文件"></a>三、修改配置文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/redis.conf</span><br></pre></td></tr></table></figure>
 <p>修改bind配置</p>
@@ -545,10 +545,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">关于VuePress</a>
               </li>
              
@@ -557,11 +553,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">hexoToGitHub</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,11 +565,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dashboard</a>
+                <a href="javascript:void(0)" class="js-tag color3">hexoToGitHub</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">gitea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">dashboard</a>
               </li>
              
               <li class="article-tag-list-item">
