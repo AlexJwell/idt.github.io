@@ -183,6 +183,103 @@
             
 
   
+    <article id="post-yum命令汇总" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/idt.github.io/yum%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/" target="_blank">yum命令汇总</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/idt.github.io/yum%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/" class="archive-article-date">
+        <time datetime="2022-01-25T06:51:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-25</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="使用YUM查找软件包"><a href="#使用YUM查找软件包" class="headerlink" title="使用YUM查找软件包"></a>使用YUM查找软件包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum search</span><br></pre></td></tr></table></figure>
+<h3 id="列出所有可更新的软件包"><a href="#列出所有可更新的软件包" class="headerlink" title="列出所有可更新的软件包"></a>列出所有可更新的软件包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list updates</span><br></pre></td></tr></table></figure>
+<h3 id="列出所有已安装的软件包"><a href="#列出所有已安装的软件包" class="headerlink" title="列出所有已安装的软件包"></a>列出所有已安装的软件包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list installed</span><br></pre></td></tr></table></figure>
+<h3 id="列出所有已安装但不在-Yum-Repository-内的软件包"><a href="#列出所有已安装但不在-Yum-Repository-内的软件包" class="headerlink" title="列出所有已安装但不在 Yum Repository 内的软件包"></a>列出所有已安装但不在 Yum Repository 内的软件包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list extras</span><br></pre></td></tr></table></figure>
+<h3 id="列出所指定的软件包"><a href="#列出所指定的软件包" class="headerlink" title="列出所指定的软件包"></a>列出所指定的软件包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list</span><br></pre></td></tr></table></figure>
+<h3 id="列出软件包的信息"><a href="#列出软件包的信息" class="headerlink" title="列出软件包的信息"></a>列出软件包的信息</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum info</span><br></pre></td></tr></table></figure>
+<h3 id="列出所有可更新的软件包信息"><a href="#列出所有可更新的软件包信息" class="headerlink" title="列出所有可更新的软件包信息"></a>列出所有可更新的软件包信息</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum info updates</span><br></pre></td></tr></table></figure>
+<h3 id="列出所有已安装的软件包信息"><a href="#列出所有已安装的软件包信息" class="headerlink" title="列出所有已安装的软件包信息"></a>列出所有已安装的软件包信息</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum info installed</span><br></pre></td></tr></table></figure>
+<h3 id="列出软件包提供哪些文件"><a href="#列出软件包提供哪些文件" class="headerlink" title="列出软件包提供哪些文件"></a>列出软件包提供哪些文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum provides</span><br></pre></td></tr></table></figure>
+<h3 id="设置稳定存储库"><a href="#设置稳定存储库" class="headerlink" title="设置稳定存储库"></a>设置稳定存储库</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">查看存储库命令</span></span><br><span class="line">yum-config-manager</span><br><span class="line"><span class="meta">#</span><span class="bash">安装yum-utils包管理工具</span></span><br><span class="line">yum install -y yum-utils</span><br><span class="line"><span class="meta">#</span><span class="bash">设置官方存储库</span></span><br><span class="line">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line"><span class="meta">#</span><span class="bash">或者设置阿里的存储库</span></span><br><span class="line">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line"><span class="meta">#</span><span class="bash">设置每晚更新，该设置可以不设置</span></span><br><span class="line">yum-config-manager --enable docker-ce-nightly</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="安装软件之后的回滚（即卸载软件及该软件的相关依赖）"><a href="#安装软件之后的回滚（即卸载软件及该软件的相关依赖）" class="headerlink" title="安装软件之后的回滚（即卸载软件及该软件的相关依赖）"></a>安装软件之后的回滚（即卸载软件及该软件的相关依赖）</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">查看yum操作历史</span></span><br><span class="line">yum history</span><br><span class="line"><span class="meta">#</span><span class="bash">查看某一个操作</span></span><br><span class="line">yum history info 要查看的ID号</span><br><span class="line"><span class="meta">#</span><span class="bash">回滚</span></span><br><span class="line">yum history undo 要回滚的ID号</span><br></pre></td></tr></table></figure>
+
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell、linux、yum</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/idt.github.io/yum%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-高斯数据库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1385,6 +1482,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">关于VuePress</a>
               </li>
              
@@ -1405,11 +1506,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">gitea</a>
+                <a href="javascript:void(0)" class="js-tag color5">dashboard</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dashboard</a>
+                <a href="javascript:void(0)" class="js-tag color1">gitea</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1425,11 +1526,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">常用vuepress工具集说明</a>
+                <a href="javascript:void(0)" class="js-tag color1">关于quartz组件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">关于quartz组件</a>
+                <a href="javascript:void(0)" class="js-tag color1">常用vuepress工具集说明</a>
               </li>
              
               <li class="article-tag-list-item">

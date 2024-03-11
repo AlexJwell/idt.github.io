@@ -10,15 +10,15 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="Anolis系统安装mysql一、使用DNF安装MYSQL-SERVERdnf install mysql-server 二、启动数据库12systemctl start mysqld #启动MYSQL 服务systemctl enable mysqld #将MYSQL 服务设置为开机启动 查看MYSQL 服务状态：(active 表面服务已正常启动) 1systemctl status mysq">
+  <meta name="description" content="Anolis系统安装mysql一、使用DNF安装MYSQL-SERVER1dnf install mysql-server 二、启动数据库12systemctl start mysqld #启动MYSQL 服务systemctl enable mysqld #将MYSQL 服务设置为开机启动 查看MYSQL 服务状态：(active 表面服务已正常启动) 1systemctl status mys">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Anolis系统安装mysql">
 <meta property="og:url" content="https://alexjwell.github.io/anolis%E5%AE%89%E8%A3%85mysql/index.html">
 <meta property="og:site_name" content="Alex的个人博客">
-<meta property="og:description" content="Anolis系统安装mysql一、使用DNF安装MYSQL-SERVERdnf install mysql-server 二、启动数据库12systemctl start mysqld #启动MYSQL 服务systemctl enable mysqld #将MYSQL 服务设置为开机启动 查看MYSQL 服务状态：(active 表面服务已正常启动) 1systemctl status mysq">
+<meta property="og:description" content="Anolis系统安装mysql一、使用DNF安装MYSQL-SERVER1dnf install mysql-server 二、启动数据库12systemctl start mysqld #启动MYSQL 服务systemctl enable mysqld #将MYSQL 服务设置为开机启动 查看MYSQL 服务状态：(active 表面服务已正常启动) 1systemctl status mys">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-03-11T04:51:28.000Z">
-<meta property="article:modified_time" content="2024-03-11T07:26:26.948Z">
+<meta property="article:modified_time" content="2024-03-11T08:05:36.344Z">
 <meta property="article:author" content="Alex">
 <meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
@@ -227,7 +227,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h1 id="Anolis系统安装mysql"><a href="#Anolis系统安装mysql" class="headerlink" title="Anolis系统安装mysql"></a>Anolis系统安装mysql</h1><h2 id="一、使用DNF安装MYSQL-SERVER"><a href="#一、使用DNF安装MYSQL-SERVER" class="headerlink" title="一、使用DNF安装MYSQL-SERVER"></a>一、使用DNF安装MYSQL-SERVER</h2><p>dnf install mysql-server</p>
+    <h1 id="Anolis系统安装mysql"><a href="#Anolis系统安装mysql" class="headerlink" title="Anolis系统安装mysql"></a>Anolis系统安装mysql</h1><h2 id="一、使用DNF安装MYSQL-SERVER"><a href="#一、使用DNF安装MYSQL-SERVER" class="headerlink" title="一、使用DNF安装MYSQL-SERVER"></a>一、使用DNF安装MYSQL-SERVER</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf install mysql-server</span><br></pre></td></tr></table></figure>
 <h2 id="二、启动数据库"><a href="#二、启动数据库" class="headerlink" title="二、启动数据库"></a>二、启动数据库</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld #启动MYSQL 服务</span><br><span class="line">systemctl enable mysqld #将MYSQL 服务设置为开机启动</span><br></pre></td></tr></table></figure>
 <p>查看MYSQL 服务状态：(active 表面服务已正常启动)</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status mysqld</span><br></pre></td></tr></table></figure>
@@ -420,8 +420,8 @@
 <nav id="article-nav">
   
   
-    <a href="/idt.github.io/%E4%BD%BF%E7%94%A8kubeasz%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">使用kubasz快速搭建Kubernetes集群</div>
+    <a href="/idt.github.io/anolis%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85redis/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Anolis系统快速安装redis</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -579,6 +579,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">关于VuePress</a>
               </li>
              
@@ -599,11 +603,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">gitea</a>
+                <a href="javascript:void(0)" class="js-tag color5">dashboard</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">dashboard</a>
+                <a href="javascript:void(0)" class="js-tag color1">gitea</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,11 +623,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">常用vuepress工具集说明</a>
+                <a href="javascript:void(0)" class="js-tag color1">关于quartz组件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">关于quartz组件</a>
+                <a href="javascript:void(0)" class="js-tag color1">常用vuepress工具集说明</a>
               </li>
              
               <li class="article-tag-list-item">
