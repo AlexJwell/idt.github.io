@@ -1351,6 +1351,62 @@
 <h3 id="SELinux设置"><a href="#SELinux设置" class="headerlink" title="SELinux设置"></a>SELinux设置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">临时关闭SELinux</span></span><br><span class="line">setenforce 0</span><br><span class="line"><span class="meta">#</span><span class="bash">开启SELinux</span></span><br><span class="line">setenforce 1</span><br></pre></td></tr></table></figure>
 <p>永久生效</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 操作前先备份</span></span><br><span class="line">cp /etc/selinux/config /etc/selinux/config.bak</span><br><span class="line"><span class="meta">#</span><span class="bash"> 手动编辑配置文件修改SELinux级别</span></span><br><span class="line">vi /etc/selinux/config</span><br><span class="line"><span class="meta">#</span><span class="bash">     SELINUX= can take one of these three values:</span></span><br><span class="line"><span class="meta">#</span><span class="bash">     enforcing - SELinux security policy is enforced.</span></span><br><span class="line"><span class="meta">#</span><span class="bash">     permissive - SELinux prints warnings instead of enforcing.</span></span><br><span class="line"><span class="meta">#</span><span class="bash">     disabled - No SELinux policy is loaded.</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 命令修改SELinux级别从enforcing变为permissive，其中enforcing代表打开，disabled代表关闭</span></span><br><span class="line">sed -i &#x27;s/SELINUX=enforcing/SELINUX=permissive/&#x27; /etc/selinux/config</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看selinux状态：</span></span><br><span class="line">getenforce</span><br><span class="line"><span class="meta">#</span><span class="bash">或者</span></span><br><span class="line">sestatus -v</span><br></pre></td></tr></table></figure>
+<h3 id="查看网络通讯情况"><a href="#查看网络通讯情况" class="headerlink" title="查看网络通讯情况"></a>查看网络通讯情况</h3><p>编写一个文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">vim curl-format.txt</span><br><span class="line"> </span><br><span class="line">time_namelookup: %&#123;time_namelookup&#125;\n</span><br><span class="line">time_connect: %&#123;time_connect&#125;\n</span><br><span class="line">time_appconnect: %&#123;time_appconnect&#125;\n</span><br><span class="line">time_redirect: %&#123;time_redirect&#125;\n</span><br><span class="line">time_pretransfer: %&#123;time_pretransfer&#125;\n</span><br><span class="line">time_starttransfer: %&#123;time_starttransfer&#125;\n</span><br><span class="line">size_download：%&#123;size_download&#125;\n</span><br><span class="line">size_upload：%&#123;size_upload&#125;\n</span><br><span class="line">size_header：%&#123;size_header&#125;\n</span><br><span class="line">size_request：%&#123;size_request&#125;\n</span><br><span class="line">----------\n</span><br><span class="line">time_total: %&#123;time_total&#125;\n</span><br></pre></td></tr></table></figure>
+<p>执行命令将请求的网络耗时打印到文件中</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -w &quot;@curl-format.txt&quot; -o /dev/null -s -L &quot;http://baidu.com&quot;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>time_namelookup</td>
+<td>DNS解析时间,从请求开始到DNS解析完毕所用时间</td>
+</tr>
+<tr>
+<td>time_connect</td>
+<td>连接时间,从开始到建立TCP连接完成所用时间,包括前边DNS解析时间，如果需要单纯的得到连接时间，用这个time_connect时间减去前边time_namelookup时间</td>
+</tr>
+<tr>
+<td>time_appconnect</td>
+<td>连接建立完成时间，如SSL/SSH等建立连接或者完成三次握手时间</td>
+</tr>
+<tr>
+<td>time_redirect</td>
+<td>重定向时间，包括到最后一次传输前的几次重定向的DNS解析，连接，预传输，传输时间</td>
+</tr>
+<tr>
+<td>time_pretransfer</td>
+<td>从开始到准备传输的时间</td>
+</tr>
+<tr>
+<td>time_starttransfer</td>
+<td>开始传输时间。在client发出请求之后，Web 服务器返回数据的第一个字节所用的时间</td>
+</tr>
+<tr>
+<td>size_download</td>
+<td>下载大小</td>
+</tr>
+<tr>
+<td>size_upload</td>
+<td>上传大小</td>
+</tr>
+<tr>
+<td>size_header</td>
+<td>下载的header的大小</td>
+</tr>
+<tr>
+<td>size_request</td>
+<td>请求的大小</td>
+</tr>
+<tr>
+<td>time_total</td>
+<td>总时间，按秒计。精确到小数点后三位</td>
+</tr>
+</tbody></table>
 <h2 id="权限类操作与命令"><a href="#权限类操作与命令" class="headerlink" title="权限类操作与命令"></a>权限类操作与命令</h2><h3 id="给普通用户添加sudo权限"><a href="#给普通用户添加sudo权限" class="headerlink" title="给普通用户添加sudo权限"></a>给普通用户添加sudo权限</h3><h4 id="1、切换到root用户"><a href="#1、切换到root用户" class="headerlink" title="1、切换到root用户"></a>1、切换到root用户</h4><p>执行</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su</span><br></pre></td></tr></table></figure>
 <p>输入root用户的密码即可切换到root用户</p>
@@ -1745,6 +1801,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">关于VuePress</a>
               </li>
              
@@ -1753,15 +1813,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1770,6 +1822,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">gitea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
