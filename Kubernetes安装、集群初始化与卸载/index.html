@@ -45,6 +45,9 @@
 
 
   
+    <script src="/idt.github.io/lib/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+  
 
 </head>
 
@@ -590,6 +593,19 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Kubernetes%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">Kubernetes安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">1.1.</span> <span class="toc-text">一、环境准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BD%BF%E7%94%A8%E7%9A%84%E7%8E%AF%E5%A2%83%E7%89%88%E6%9C%AC"><span class="toc-number">1.1.1.</span> <span class="toc-text">1、使用的环境版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E9%9C%80%E8%A6%81%E5%AE%89%E8%A3%85%E7%9A%84%E7%BB%84%E4%BB%B6"><span class="toc-number">1.1.2.</span> <span class="toc-text">2、需要安装的组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.1.3.</span> <span class="toc-text">3、环境设置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%EF%BC%89%E5%85%B3%E9%97%AD%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">1）关闭防火墙</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%EF%BC%89%E8%AE%BE%E7%BD%AE%E8%8A%82%E7%82%B9%E4%B8%BB%E6%9C%BA%E5%90%8D"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">2）设置节点主机名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%EF%BC%89%E8%AE%BE%E7%BD%AE%E8%8A%82%E7%82%B9%E4%B8%BB%E6%9C%BA%E5%90%8D-IP%E7%9A%84hosts%E8%A7%A3%E6%9E%90"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">3）设置节点主机名&#x2F;IP的hosts解析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%EF%BC%89%E5%85%B3%E9%97%ADswap%E5%88%86%E5%8C%BA%EF%BC%8C%E5%90%A6%E5%88%99kubelet%E4%BC%9A%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5%EF%BC%8C%E4%B9%9F%E5%8F%AF%E4%BB%A5%E8%AE%BE%E7%BD%AEkubelet%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0-%E2%80%93fail-swap-on%E4%B8%BAfalse%E5%85%B3%E9%97%ADswap%E6%A3%80%E6%9F%A5"><span class="toc-number">1.1.3.4.</span> <span class="toc-text">4）关闭swap分区，否则kubelet会启动失败，也可以设置kubelet启动参数 –fail-swap-on为false关闭swap检查</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a%E3%80%81%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E5%85%B3%E9%97%ADswap"><span class="toc-number">1.1.3.4.1.</span> <span class="toc-text">a、处理方法一：关闭swap</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b%E3%80%81%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E5%85%B3%E9%97%ADswap%E6%A3%80%E6%9F%A5"><span class="toc-number">1.1.3.4.2.</span> <span class="toc-text">b、处理方法二：关闭swap检查</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%EF%BC%89%E5%85%B3%E9%97%AD-SELinux%EF%BC%8C%E5%90%A6%E5%88%99-kubelet-%E6%8C%82%E8%BD%BD%E7%9B%AE%E5%BD%95%E6%97%B6%E5%8F%AF%E8%83%BD%E6%8A%A5%E9%94%99Permission-denied"><span class="toc-number">1.1.3.5.</span> <span class="toc-text">5）关闭 SELinux，否则 kubelet 挂载目录时可能报错Permission denied</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%BC%80%E5%A7%8B%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">二、开始安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%AE%89%E8%A3%85Docker"><span class="toc-number">1.2.1.</span> <span class="toc-text">1、安装Docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%AE%89%E8%A3%85kubelet%E3%80%81kubeadm%E3%80%81kubectl%E7%BB%84%E4%BB%B6"><span class="toc-number">1.2.2.</span> <span class="toc-text">2、安装kubelet、kubeadm、kubectl组件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%EF%BC%89%E6%96%B0%E5%BB%BArepo"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">1）新建repo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%89%A7%E8%A1%8C%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4%E5%B9%B6%E5%90%AF%E5%8A%A8%E7%BB%84%E4%BB%B6"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">2)执行安装命令并启动组件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="toc-number">1.2.3.</span> <span class="toc-text">3、安装依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E8%AE%BE%E7%BD%AE%E9%98%B2%E7%81%AB%E5%A2%99%E4%B8%BAiptables%E5%B9%B6%E8%AE%BE%E7%BD%AE%E7%A9%BA%E8%A7%84%E5%88%99"><span class="toc-number">1.2.4.</span> <span class="toc-text">4、设置防火墙为iptables并设置空规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E8%B0%83%E6%95%B4%E5%86%85%E6%A0%B8%E5%8F%82%E6%95%B0"><span class="toc-number">1.2.5.</span> <span class="toc-text">5、调整内核参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E8%AE%BE%E7%BD%AE%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4"><span class="toc-number">1.2.6.</span> <span class="toc-text">6、设置系统时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81%E8%AE%BE%E7%BD%AErsyslogd-%E5%92%8C-systemd-journald"><span class="toc-number">1.2.7.</span> <span class="toc-text">7、设置rsyslogd 和 systemd journald</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81kube-proxy%E5%BC%80%E5%90%AFipvs%E7%9A%84%E5%89%8D%E7%BD%AE%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.2.8.</span> <span class="toc-text">8、kube-proxy开启ipvs的前置条件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E9%9B%86%E7%BE%A4"><span class="toc-number">1.3.</span> <span class="toc-text">三、初始化集群</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%BB%E8%8A%82%E7%82%B9"><span class="toc-number">1.3.1.</span> <span class="toc-text">1、初始化主节点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8RPM%E5%AE%89%E8%A3%85%E5%8C%85%E5%AE%89%E8%A3%85%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.3.1.0.1.</span> <span class="toc-text">使用RPM安装包安装服务</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%8E%8B%E7%BC%A9%E5%8C%85%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.3.1.0.2.</span> <span class="toc-text">使用压缩包手动安装服务</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#a%E3%80%81%E5%B0%86%E5%AE%89%E8%A3%85%E5%8C%85%E4%B8%8A%E4%BC%A0%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E4%B9%8B%E5%90%8E%E8%BF%9B%E8%A1%8C%E8%A7%A3%E5%8E%8B"><span class="toc-number">1.3.1.0.2.1.</span> <span class="toc-text">a、将安装包上传到服务器上之后进行解压</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#b%E3%80%81%E7%84%B6%E5%90%8E%E5%B0%86%E6%96%87%E4%BB%B6%E5%A4%8D%E5%88%B6%E5%88%B0%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%E5%B9%B6%E8%B5%8B%E6%9D%83"><span class="toc-number">1.3.1.0.2.2.</span> <span class="toc-text">b、然后将文件复制到系统目录并赋权</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#c%E3%80%81%E5%88%9B%E5%BB%BAcri-dockerd%E5%90%AF%E5%8A%A8%E6%96%87%E4%BB%B6"><span class="toc-number">1.3.1.0.2.3.</span> <span class="toc-text">c、创建cri-dockerd启动文件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#d%E3%80%81%E4%BF%AE%E6%94%B9kublet%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.3.1.0.2.4.</span> <span class="toc-text">d、修改kublet配置文件</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%8A%A0%E5%85%A5%E4%B8%BB%E8%8A%82%E7%82%B9%E4%BB%A5%E5%8F%8A%E5%85%B6%E4%BD%99%E5%B7%A5%E4%BD%9C%E8%8A%82%E7%82%B9"><span class="toc-number">1.3.2.</span> <span class="toc-text">2、加入主节点以及其余工作节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E5%AE%89%E8%A3%85Pod%E7%BD%91%E7%BB%9C%E6%8F%92%E4%BB%B6"><span class="toc-number">1.3.3.</span> <span class="toc-text">5、安装Pod网络插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BD%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%B9%B6%E6%B7%BB%E5%8A%A0%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">1)下载插件配置文件并添加配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%A3%80%E6%9F%A5%E5%90%84%E8%8A%82%E7%82%B9%E6%98%AF%E5%90%A6%E5%87%86%E5%A4%87%E5%B0%B1%E7%BB%AA"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">2)检查各节点是否准备就绪</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Kubernetes%E5%8D%B8%E8%BD%BD"><span class="toc-number">2.</span> <span class="toc-text">Kubernetes卸载</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9C%BA%E5%99%A8%E7%8E%AF%E5%A2%83"><span class="toc-number">2.1.</span> <span class="toc-text">一、机器环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8D%B8%E8%BD%BD%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.2.</span> <span class="toc-text">二、卸载步骤</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -637,7 +653,7 @@
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
-		toc_hide_index: true,
+		toc_hide_index: false,
 		root: "/idt.github.io/",
 		innerArchive: true,
 		showTags: true
@@ -724,10 +740,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
@@ -736,11 +748,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Hello World</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
+                <a href="javascript:void(0)" class="js-tag color2">Hello World</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -748,11 +760,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">gitea</a>
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">gitea</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -772,11 +788,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">关于quartz组件</a>
+                <a href="javascript:void(0)" class="js-tag color1">常用vuepress工具集说明</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">常用vuepress工具集说明</a>
+                <a href="javascript:void(0)" class="js-tag color1">关于quartz组件</a>
               </li>
              
               <li class="article-tag-list-item">

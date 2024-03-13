@@ -45,6 +45,9 @@
 
 
   
+    <script src="/idt.github.io/lib/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+  
 
 </head>
 
@@ -411,6 +414,19 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#kafka%E5%AE%98%E7%BD%91"><span class="toc-number">1.</span> <span class="toc-text">kafka官网</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%B8%8B%E8%BD%BDkafka%E5%AE%89%E8%A3%85%E5%8C%85kafka-2-12-2-8-0-tgz"><span class="toc-number">2.</span> <span class="toc-text">一、下载kafka安装包kafka_2.12-2.8.0.tgz</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%B8%8B%E8%BD%BD%E5%AE%8C%E6%88%90%E5%90%8E%E8%BF%9B%E8%A1%8C%E8%A7%A3%E5%8E%8B%E7%BC%A9"><span class="toc-number">3.</span> <span class="toc-text">二、下载完成后进行解压缩</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%A7%A3%E5%8E%8B%E5%AE%8C%E6%88%90%E5%90%8E%E8%BF%9B%E5%85%A5kafka%E7%9B%AE%E5%BD%95"><span class="toc-number">4.</span> <span class="toc-text">三、解压完成后进入kafka目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%BF%AE%E6%94%B9zookeeper-properties%E9%85%8D%E7%BD%AE"><span class="toc-number">5.</span> <span class="toc-text">四、修改zookeeper.properties配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E4%BF%AE%E6%94%B9server-properties%E9%85%8D%E7%BD%AE"><span class="toc-number">6.</span> <span class="toc-text">五、修改server.properties配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E8%BF%9B%E5%85%A5bin%E7%9B%AE%E5%BD%95-%E5%90%AF%E5%8A%A8zookeeper"><span class="toc-number">7.</span> <span class="toc-text">六、进入bin目录,启动zookeeper</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E5%90%AF%E5%8A%A8kafka"><span class="toc-number">8.</span> <span class="toc-text">七、启动kafka</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E4%BF%AE%E6%94%B9java%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%8C%E4%BB%A5%E4%BE%BF%E5%8F%AF%E4%BB%A5%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E3%80%90%E5%8F%AF%E9%80%89%E6%AD%A5%E9%AA%A4%E3%80%91"><span class="toc-number">9.</span> <span class="toc-text">八、修改java环境变量，以便可以快速启动【可选步骤】</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -458,7 +474,7 @@
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
-		toc_hide_index: true,
+		toc_hide_index: false,
 		root: "/idt.github.io/",
 		innerArchive: true,
 		showTags: true
@@ -545,10 +561,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
@@ -557,11 +569,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Hello World</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
+                <a href="javascript:void(0)" class="js-tag color2">Hello World</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,11 +581,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">gitea</a>
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">gitea</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -593,11 +609,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">关于quartz组件</a>
+                <a href="javascript:void(0)" class="js-tag color1">常用vuepress工具集说明</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">常用vuepress工具集说明</a>
+                <a href="javascript:void(0)" class="js-tag color1">关于quartz组件</a>
               </li>
              
               <li class="article-tag-list-item">

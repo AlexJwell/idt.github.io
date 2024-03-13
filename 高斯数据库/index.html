@@ -45,6 +45,9 @@
 
 
   
+    <script src="/idt.github.io/lib/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+  
 
 </head>
 
@@ -429,6 +432,19 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%98%E6%96%B9%E7%BD%91%E7%AB%99"><span class="toc-number">1.</span> <span class="toc-text">一、官方网站</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85%E9%AB%98%E6%96%AF%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E5%8D%95%E8%8A%82%E7%82%B9%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">二、安装高斯数据库（单节点模式）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BD%BF%E7%94%A8root%E7%94%A8%E6%88%B7%E5%88%9D%E5%A7%8B%E5%8C%96%E9%83%A8%E5%88%86%E7%8E%AF%E5%A2%83"><span class="toc-number">2.1.</span> <span class="toc-text">1、使用root用户初始化部分环境</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%EF%BC%89%E6%96%B0%E5%BB%BA%E7%94%A8%E6%88%B7%E7%BB%84%E5%92%8C%E7%94%A8%E6%88%B7"><span class="toc-number">2.1.1.</span> <span class="toc-text">1）新建用户组和用户</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%EF%BC%89%E8%AE%BE%E7%BD%AE-opt%E7%9B%AE%E5%BD%95%E6%9D%83%E9%99%90"><span class="toc-number">2.1.2.</span> <span class="toc-text">2）设置&#x2F;opt目录权限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%EF%BC%89%E5%9C%A8-opt%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9software%E5%B9%B6%E8%B5%8B%E6%9D%83"><span class="toc-number">2.1.3.</span> <span class="toc-text">3）在&#x2F;opt目录下新建文件夹software并赋权</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%88%87%E6%8D%A2%E5%88%B0omm%E7%94%A8%E6%88%B7%E4%B9%8B%E5%90%8E%E8%BF%9B%E8%A1%8C%E5%AE%89%E8%A3%85"><span class="toc-number">2.2.</span> <span class="toc-text">2、切换到omm用户之后进行安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%EF%BC%89%E5%9C%A8-opt-software%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">2.2.1.</span> <span class="toc-text">1）在&#x2F;opt&#x2F;software目录下新建文件夹</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%EF%BC%89%E5%B0%86%E9%AB%98%E6%96%AF%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8B%E8%BD%BD%E4%B8%8B%E6%9D%A5openGauss-3-1-1-openEuler-64bit-tar-bz2%E5%B9%B6%E4%B8%8A%E4%BC%A0%E5%88%B0%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.2.2.</span> <span class="toc-text">2）将高斯数据库下载下来openGauss-3.1.1-openEuler-64bit.tar.bz2并上传到系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%EF%BC%89%E6%89%A7%E8%A1%8C%E8%A7%A3%E5%8E%8B%E5%91%BD%E4%BB%A4"><span class="toc-number">2.2.3.</span> <span class="toc-text">3）执行解压命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%EF%BC%89%E8%BF%9B%E5%85%A5%E7%9B%AE%E5%BD%95"><span class="toc-number">2.2.4.</span> <span class="toc-text">4）进入目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%EF%BC%89%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%E5%88%9D%E5%A7%8B%E5%8C%96%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%8C%E5%85%B6%E4%B8%AD-w%E5%90%8E%E9%9D%A2%E7%9A%84%E4%B8%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%9D%E5%A7%8B%E5%8C%96%E5%AF%86%E7%A0%81"><span class="toc-number">2.2.5.</span> <span class="toc-text">5）执行命令初始化数据库，其中-w后面的为数据库初始化密码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%EF%BC%89%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9B%E7%A8%8B"><span class="toc-number">2.2.6.</span> <span class="toc-text">6）查看数据库进程</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -476,7 +492,7 @@
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
-		toc_hide_index: true,
+		toc_hide_index: false,
 		root: "/idt.github.io/",
 		innerArchive: true,
 		showTags: true
@@ -563,10 +579,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
@@ -575,11 +587,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Hello World</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
+                <a href="javascript:void(0)" class="js-tag color2">Hello World</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -587,11 +599,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">gitea</a>
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">gitea</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,11 +627,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">关于quartz组件</a>
+                <a href="javascript:void(0)" class="js-tag color1">常用vuepress工具集说明</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">常用vuepress工具集说明</a>
+                <a href="javascript:void(0)" class="js-tag color1">关于quartz组件</a>
               </li>
              
               <li class="article-tag-list-item">
